@@ -2,7 +2,7 @@
 
 ## Explore Deployed Version
 
-Explore the deployed version of Pizza Store [here]().
+Explore the deployed version of Pizza Store [here](https://react-pizza-store-dev.vercel.app/).
 
 ## Overview
 
