@@ -1,0 +1,9 @@
+:root {
+  --primary-color: #333;
+  --accent-color: #7b7b7b;
+  --brand-color: #fe5f1e;
+  --white-color: #fff;
+
+  --app-background: var(--white-color);
+  --body-background: #ffdf8c;
+}

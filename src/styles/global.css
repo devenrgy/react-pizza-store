@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap');
+
 html {
   box-sizing: border-box;
 }
@@ -10,4 +12,17 @@ html {
 
 body {
   margin: 0;
+  padding: 45px;
+  font-family: 'Nunito', sans-serif;
+  color: var(--primary-color);
+  background-color: var(--body-background);
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
