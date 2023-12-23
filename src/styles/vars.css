@@ -5,5 +5,7 @@
   --white-color: #fff;
 
   --app-background: var(--white-color);
+  --categories-background: #f9f9f9;
+  --categories-active: var(--primary-color);
   --body-background: #ffdf8c;
 }

@@ -1,0 +1,33 @@
+.categoriesList {
+  display: flex;
+  gap: 10px;
+
+  li:has(input:checked) label {
+    color: var(--white-color);
+    background-color: var(--categories-active);
+  }
+
+  label {
+    display: block;
+    padding: 15px 35px;
+    border-radius: 30px;
+    font-weight: 700;
+    background-color: var(--categories-background);
+    cursor: pointer;
+
+    &:focus {
+      outline: transparent;
+    }
+
+    &:is(:hover, :focus-visible) {
+      color: var(--white-color);
+      background-color: var(--categories-active);
+      transition: 0.3s color ease, 0.3s background-color ease;
+    }
+  }
+
+  input {
+    display: none;
+    appearance: none;
+  }
+}
