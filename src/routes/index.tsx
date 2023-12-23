@@ -5,12 +5,12 @@ import { PizzaMenu } from './pizza-menu'
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root/>,
+    element: <Root />,
     children: [
       {
         index: true,
-        element: <PizzaMenu/>
-      }
-    ]
-  }
+        element: <PizzaMenu />,
+      },
+    ],
+  },
 ])
