@@ -1,0 +1,55 @@
+.sort {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 700;
+
+  & > label {
+    text-decoration: underline dotted;
+    color: var(--brand-color);
+  }
+
+  label {
+    cursor: pointer;
+    font-weight: 400;
+    user-select: none;
+  }
+
+  &:has(> input:checked) {
+    .sortList {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  input {
+    display: none;
+    appearance: none;
+  }
+}
+
+.sortList {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 10px;
+  padding-block: 15px;
+  border-radius: 10px;
+  visibility: hidden;
+  opacity: 0;
+  background: var(--white-color);
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.09);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  :has(:checked) label {
+    color: var(--brand-color);
+    background-color: rgba(254, 95, 30, 0.05);
+  }
+
+  label {
+    display: block;
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+}
