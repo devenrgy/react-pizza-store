@@ -5,14 +5,14 @@ export default function Sort() {
   const sortingList = {
     popular: 'популярности',
     price: 'цене',
-    alphabet: 'алфавиту',
+    alphabet: 'алфавиту'
   }
 
   const sortingKeys = Object.keys(sortingList) as Array<keyof typeof sortingList>
 
   const [currentSort, setCurrentSort] = useState(0)
   const [isOpenModal, setIsOpenModal] = useState(false)
-  const modalRef = useRef<HTMLUListElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const handleClickOutside = (evt: MouseEvent) => {
@@ -33,10 +33,10 @@ export default function Sort() {
   }, [])
 
   return (
-    <div className={styles.sort}>
+    <div className={styles.sort} ref={modalRef}>
       Сортировка по: <label htmlFor='sort'>{sortingList[sortingKeys[currentSort]]}</label>
-      <input id='sort' onChange={() => setIsOpenModal(!isOpenModal)} checked={isOpenModal} type='checkbox' />
-      <ul ref={modalRef} className={styles.sortList}>
+      <input id='sort' onChange={() => setIsOpenModal(!isOpenModal)} checked={isOpenModal} type='checkbox'/>
+      <ul className={styles.sortList}>
         {sortingKeys.map((key, index) => (
           <li key={index}>
             <label htmlFor={key}>{sortingList[key]}</label>
