@@ -1,16 +1,34 @@
 import styles from './navbar.module.scss';
 import { CATEGORIES } from 'constants';
-import { Link } from 'react-router-dom';
+import cn from 'lib/utils.ts';
+import { useSearchParams } from 'react-router-dom';
 
 export default function Navbar() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const currentCategory = searchParams.get('category') ?? '';
+
+  const handleClick = (currentCategory: string) => {
+    setSearchParams(() => {
+      if (currentCategory) {
+        searchParams.set('category', currentCategory);
+        searchParams.sort();
+        return searchParams;
+      }
+      searchParams.delete('category');
+      return searchParams;
+    });
+  };
+
   return (
     <nav className={styles.navbar}>
       <ul className={styles.list}>
         {CATEGORIES.map(({ name, path }, i) => (
           <li key={i}>
-            <Link to={{ search: path && `category=${path}` }}>
+            <button
+              onClick={() => handleClick(path)}
+              className={cn(styles.button, currentCategory === path && styles.active)}>
               {name}
-            </Link>
+            </button>
           </li>
         ))}
       </ul>

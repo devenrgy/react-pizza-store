@@ -7,10 +7,11 @@ import {
 import 'styles/index.scss';
 
 import Root from 'routes/root.tsx';
-import Home from 'routes/home.tsx';
+import { Home } from 'routes/home';
 import Cart from 'routes/cart.tsx';
 
 import { store } from 'store';
+
 import { Provider } from 'react-redux';
 
 const router = createBrowserRouter([

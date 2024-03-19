@@ -34,6 +34,12 @@
   font-weight: 700;
   color: var(--white);
   background: var(--color-primary);
+
+  transition: .3s ease box-shadow;
+
+  &:hover {
+    box-shadow: inset 0 0 0 10em rgba(255, 255, 255, 0.2);
+  }
 }
 
 .cartSeparator {

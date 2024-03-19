@@ -31,9 +31,16 @@ h1, h2, h3, p {
 button {
   padding: 0;
   border: none;
+  font-size: inherit;
   font-family: inherit;
   background: transparent;
   cursor: pointer;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 img {

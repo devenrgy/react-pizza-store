@@ -1,3 +1,22 @@
 .navbar {
 
 }
+
+.list {
+  display: flex;
+  gap: 10px;
+}
+
+.button {
+  padding: 15px 35px;
+  border-radius: 30px;
+  font-weight: 700;
+  background-color: var(--category-bg);
+
+  transition: .3s linear background-color, .3s linear color;
+}
+
+.active {
+  color: var(--white);
+  background-color: var(--category-active-bg);
+}
