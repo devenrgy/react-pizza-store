@@ -13,7 +13,12 @@
   font-weight: 700;
   background-color: var(--category-bg);
 
-  transition: .3s linear background-color, .3s linear color;
+  transition: .2s linear background-color, .2s linear color;
+
+  &:not(.active):hover {
+    color: #fff;
+    background-color: rgb(#dc2f02, 80%);
+  }
 }
 
 .active {

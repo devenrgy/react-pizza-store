@@ -14,6 +14,11 @@ export interface PizzaData {
   items: PizzaItem[];
 }
 
+export type PizzaParams = {
+  category: string,
+  sort: string
+}
+
 export interface Meta {
   total_items: number;
   total_pages: number;

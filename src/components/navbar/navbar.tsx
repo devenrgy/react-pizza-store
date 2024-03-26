@@ -7,10 +7,12 @@ export default function Navbar() {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentCategory = searchParams.get('category') ?? '';
 
-  const handleClick = (currentCategory: string) => {
+  const handleClick = (nextCategory: string) => {
+    if (nextCategory === currentCategory) return;
+
     setSearchParams(() => {
-      if (currentCategory) {
-        searchParams.set('category', currentCategory);
+      if (nextCategory) {
+        searchParams.set('category', nextCategory);
         searchParams.sort();
         return searchParams;
       }

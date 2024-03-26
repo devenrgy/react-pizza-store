@@ -1,5 +1,7 @@
 .sort {
   position: relative;
+  display: flex;
+  align-items: center;
 
   label {
     display: flex;
@@ -23,10 +25,16 @@
     }
   }
 
-  &:has(:checked) .menu {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity .3s linear, visibility .3s linear;
+  &:has(:checked) {
+    .menu {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity .3s linear, visibility .3s linear;
+    }
+
+    .arrow {
+      rotate: 180deg;
+    }
   }
 }
 
@@ -54,6 +62,7 @@
   text-align: left;
   width: 100%;
   padding: 10px 15px;
+  transition: .1s ease color, .1s ease background-color, .1s ease font-weight;
 
   &::after {
     display: block;
@@ -64,10 +73,16 @@
     overflow: hidden;
     visibility: hidden;
   }
+
+  &:not(.active):hover {
+    color: var(--color-primary);
+    font-weight: 700;
+    background-color: rgb(#dc2f02, 10%);
+  }
 }
 
 .active {
   font-weight: 700;
   color: var(--color-primary);
-  background-color: rgb(#dc2f02, 5%);
+  background-color: rgb(#dc2f02, 20%);
 }

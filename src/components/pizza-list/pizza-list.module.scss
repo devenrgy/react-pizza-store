@@ -1,0 +1,71 @@
+.pizzaList {
+
+}
+
+.list {
+  display: grid;
+  gap: 35px;
+  grid-template-columns: repeat(4, minmax(280px, 1fr));
+}
+
+.item {
+  width: 280px;
+
+  img {
+    display: block;
+    margin: 0 auto 10px;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 20px;
+  }
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 7px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background-color: #f3f3f3;
+
+  li {
+    display: flex;
+  }
+
+  button {
+    padding: 10px 20px;
+    flex: 1;
+    border-radius: 5px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: .2s linear background-color, .2s linear box-shadow;
+
+    &:not(.active):hover {
+      background: rgb(0, 0, 0, 10%);
+    }
+  }
+}
+
+.active {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  background: rgb(255, 255, 255);
+  pointer-events: none;
+}
+
+.addTo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 700;
+}

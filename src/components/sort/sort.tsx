@@ -1,6 +1,9 @@
 import { useSearchParams } from 'react-router-dom';
+import { TiArrowSortedUp } from 'react-icons/ti';
+
 import styles from './sort.module.scss';
 import cn from 'lib/utils';
+import { useEffect, useRef } from 'react';
 
 export default function Sort() {
   const sortList: Record<string, string> = {
@@ -10,14 +13,36 @@ export default function Sort() {
   };
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const currentSort = searchParams.get('sortBy') ?? 'rating';
+  const currentSort = searchParams.get('sort') ?? 'rating';
+  const ref = useRef<HTMLDivElement>(null);
 
-  const handleClick = (activeSort: string) => {
-    setSearchParams({ ...Object.fromEntries(searchParams), sortBy: activeSort });
+  const handleClick = (nextSort: string) => {
+    if (nextSort === currentSort) return;
+
+    setSearchParams({ ...Object.fromEntries(searchParams), sort: nextSort });
   };
 
+  useEffect(() => {
+    const handleClickOutside = ({ target }: MouseEvent) => {
+      if (!ref?.current?.contains(target as Node)) {
+        const sortPopup = document.querySelector<HTMLInputElement>('#sortCheckbox');
+
+        if (sortPopup) {
+          sortPopup.checked = false;
+        }
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className={styles.sort}>
+    <div ref={ref} className={styles.sort}>
+      <TiArrowSortedUp className={styles.arrow}/>
       <label htmlFor='sortCheckbox'>Сортировка по: <button>{sortList[currentSort]}</button></label>
       <input id='sortCheckbox' className={styles.checkbox} type='checkbox'/>
 
