@@ -5,6 +5,7 @@ import { LuShoppingCart } from 'react-icons/lu';
 
 import { RootState } from 'store';
 import { useSelector } from 'react-redux';
+import { Search } from 'components/search';
 
 export default function Header() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
@@ -21,6 +22,8 @@ export default function Header() {
           <p className={styles.slogan}>ваш кусочек пиццы в раю</p>
         </div>
       </Link>
+
+      <Search/>
 
       <Link to='/cart' className={styles.cartBtn}>
         {cartQuantity ? <>

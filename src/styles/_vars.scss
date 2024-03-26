@@ -3,14 +3,25 @@
   --black: #000;
 
   --color-primary: #dc2f02;
-  --color-base: #171717;
+  --color-primary-hover: #9d0208;
+  --color-font: #f1f1f1;
   --color-gray: #a3a3a3;
 
-  --page-separator: #f7f7f7;
+  --color-bg: #262626;
 
-  --category-bg: #f9f9f9;
-  --category-active-bg: #282828;
+  --color-separator: #262626;
+
+  --category-bg: #262626;
+  --category-active-bg: var(--color-primary);
+  --category-bg-hover: #333;
+
+  --sort-bg: #000;
+
+  --search-bg: #000;
+
+  --controls-bg: #262626;
+  --controls-active: #000;
 
   --app-bg-outer: linear-gradient(to bottom right, #fed7aa, #dc2f02);
-  --app-bg-inner: var(--white);
+  --app-bg-inner: #121212;
 }

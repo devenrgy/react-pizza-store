@@ -1,0 +1,30 @@
+.root {
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: rgb(0, 0, 0, 50%);
+  }
+}
+
+.wrapper {
+  max-width: 1340px;
+  margin: 30px auto 0;
+  border-radius: 10px;
+  padding: 30px 50px 70px;
+  box-shadow: 0 15px 20px 0 rgb(0, 0, 0, 0.03);
+  background: rgb(#000, 80%);
+}
+
+.video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}

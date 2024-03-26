@@ -16,20 +16,26 @@ export default function Sort() {
   const currentSort = searchParams.get('sort') ?? 'rating';
   const ref = useRef<HTMLDivElement>(null);
 
+  const handleCloseSort = () => {
+    const sortPopup = document.querySelector<HTMLInputElement>('#sortCheckbox');
+
+    if (sortPopup) {
+      sortPopup.checked = false;
+    }
+  };
+
   const handleClick = (nextSort: string) => {
     if (nextSort === currentSort) return;
 
     setSearchParams({ ...Object.fromEntries(searchParams), sort: nextSort });
+
+    handleCloseSort();
   };
 
   useEffect(() => {
     const handleClickOutside = ({ target }: MouseEvent) => {
       if (!ref?.current?.contains(target as Node)) {
-        const sortPopup = document.querySelector<HTMLInputElement>('#sortCheckbox');
-
-        if (sortPopup) {
-          sortPopup.checked = false;
-        }
+        handleCloseSort();
       }
     };
 
@@ -46,15 +52,18 @@ export default function Sort() {
       <label htmlFor='sortCheckbox'>Сортировка по: <button>{sortList[currentSort]}</button></label>
       <input id='sortCheckbox' className={styles.checkbox} type='checkbox'/>
 
-      <ul className={styles.menu}>
-        {Object.entries(sortList).map(([value, name], i) => (
-          <li key={i} className={styles.item}>
-            <button onClick={() => handleClick(value)}
-                    title={name}
-                    className={cn(styles.button, currentSort === value && styles.active)}>{name}</button>
-          </li>
-        ))}
-      </ul>
+      <div className={styles.wrapper}>
+        <ul className={styles.menu}>
+          {Object.entries(sortList).map(([value, name], i) => (
+            <li key={i} className={styles.item}>
+              <button onClick={() => handleClick(value)}
+                      title={name}
+                      className={cn(styles.button, currentSort === value && styles.active)}>{name}</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
     </div>
   );
 }

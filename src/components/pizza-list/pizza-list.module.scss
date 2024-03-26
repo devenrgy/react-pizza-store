@@ -31,7 +31,7 @@
   padding: 7px;
   margin-bottom: 20px;
   border-radius: 10px;
-  background-color: #f3f3f3;
+  background-color: var(--color-bg);
 
   li {
     display: flex;
@@ -48,14 +48,14 @@
     transition: .2s linear background-color, .2s linear box-shadow;
 
     &:not(.active):hover {
-      background: rgb(0, 0, 0, 10%);
+      background: rgb(0, 0, 0, 30%);
     }
   }
 }
 
 .active {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.04);
-  background: rgb(255, 255, 255);
+  background: var(--controls-active);
   pointer-events: none;
 }
 

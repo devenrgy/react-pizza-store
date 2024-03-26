@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import 'styles/index.scss';
 
-import Root from 'routes/root.tsx';
+import { Root } from 'routes/root';
 import { Home } from 'routes/home';
 import Cart from 'routes/cart.tsx';
 

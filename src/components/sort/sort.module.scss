@@ -26,10 +26,9 @@
   }
 
   &:has(:checked) {
-    .menu {
+    .wrapper {
       visibility: visible;
-      opacity: 1;
-      transition: opacity .3s linear, visibility .3s linear;
+      grid-template-rows: 1fr;
     }
 
     .arrow {
@@ -42,19 +41,28 @@
   display: none;
 }
 
-.menu {
+.wrapper {
   position: absolute;
-  visibility: hidden;
-  opacity: 0;
   top: 115%;
   right: 0;
+
+  display: grid;
+  grid-template-rows: 0fr;
   padding: 5px 0;
+  border: 1px solid var(--color-separator);
+
+  visibility: hidden;
+
   border-radius: 10px;
 
+  background-color: var(--sort-bg);
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.09);
-  background-color: var(--white);
 
-  transition: opacity .3s linear, visibility .3s linear;
+  transition: grid-template-rows .3s ease, visibility .3s ease;
+}
+
+.menu {
+  overflow: hidden;
 }
 
 .button {
@@ -76,7 +84,6 @@
 
   &:not(.active):hover {
     color: var(--color-primary);
-    font-weight: 700;
     background-color: rgb(#dc2f02, 10%);
   }
 }
