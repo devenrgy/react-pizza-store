@@ -13,7 +13,6 @@ export default function Navbar() {
     setSearchParams(() => {
       if (nextCategory) {
         searchParams.set('category', nextCategory);
-        searchParams.sort();
         return searchParams;
       }
       searchParams.delete('category');

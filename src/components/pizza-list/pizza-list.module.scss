@@ -5,14 +5,19 @@
 .list {
   display: grid;
   gap: 35px;
-  grid-template-columns: repeat(4, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 280px);
 }
 
 .item {
-  width: 280px;
+  display: grid;
+  gap: 0;
+  grid-template-rows: subgrid;
+  grid-row: span 4;
 
   img {
     display: block;
+    width: 260px;
+    height: 260px;
     margin: 0 auto 10px;
   }
 
@@ -21,6 +26,7 @@
     text-align: center;
     font-weight: 800;
     font-size: 20px;
+    word-break: break-word;
   }
 }
 

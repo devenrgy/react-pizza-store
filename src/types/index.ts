@@ -16,7 +16,8 @@ export interface PizzaData {
 
 export type PizzaParams = {
   category: string,
-  sort: string
+  sort: string,
+  q: string
 }
 
 export interface Meta {

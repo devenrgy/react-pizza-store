@@ -14,7 +14,6 @@ export default function Root() {
       <div className={styles.wrapper}>
         <Header/>
 
-
         <main>
           <Outlet/>
         </main>

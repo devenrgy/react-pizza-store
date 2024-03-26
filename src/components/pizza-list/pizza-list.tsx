@@ -8,7 +8,8 @@ import { useSearchParams } from 'react-router-dom';
 
 async function getData<T>({
                             category,
-                            sort,
+                            sort = 'rating',
+                            q = '',
                           }: PizzaParams): Promise<T> {
   try {
     const currentCategory = !category ? '' : `&category=${category}`;
@@ -18,7 +19,7 @@ async function getData<T>({
     // );
 
     const res = await fetch(
-      `https://4275eac693d4b299.mokky.dev/items/?page=${1}&sortBy=${sort}${currentCategory}&limit=4`,
+      `https://4275eac693d4b299.mokky.dev/items/?page=${1}&sortBy=${sort}${currentCategory}&title=*${q}&limit=4`,
     );
 
     return res.json();

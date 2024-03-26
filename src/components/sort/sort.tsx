@@ -7,9 +7,10 @@ import { useEffect, useRef } from 'react';
 
 export default function Sort() {
   const sortList: Record<string, string> = {
-    rating: 'популярности',
-    price: 'по цене',
-    title: 'по алфавиту',
+    rating: 'рейтингу',
+    price: 'возрастанию цены',
+    '-price': 'убыванию цены',
+    title: 'алфавиту',
   };
 
   const [searchParams, setSearchParams] = useSearchParams();
