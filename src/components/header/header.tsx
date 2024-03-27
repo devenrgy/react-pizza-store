@@ -10,7 +10,7 @@ import { Search } from 'components/search';
 export default function Header() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const totalAmount = cartItems.reduce((acc, item) => acc + item.price, 0);
-  const cartQuantity = 0;
+  const cartQuantity = cartItems.length;
 
   return (
     <header className={styles.header}>

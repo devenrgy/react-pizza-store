@@ -22,5 +22,6 @@
 }
 
 .active {
+  pointer-events: none;
   background-color: var(--category-active-bg);
 }

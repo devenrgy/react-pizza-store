@@ -5,8 +5,8 @@ export type CartItem = {
   id: number;
   imageUrl: string;
   title: string;
-  types: string;
-  sizes: number;
+  type: string;
+  size: number;
   price: number;
   quantity: number;
 }
@@ -24,10 +24,10 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     add: (state, action: PayloadAction<CartItem>) => {
-      const isExists = state.items.some(item => item.id === action.payload.id);
+      const isExists = state.items.some(item => item.id === action.payload.id && item.type === action.payload.type && item.size === action.payload.size);
 
       if (isExists) {
-        state.items = state.items.map(item => item.id === action.payload.id ? {
+        state.items = state.items.map(item => item.id === action.payload.id && item.type === action.payload.type && item.size === action.payload.size ? {
           ...item,
           quantity: item.quantity + 1,
         } : item);

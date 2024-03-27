@@ -1,10 +1,8 @@
 import styles from './pizza-list.module.scss';
-import { Button } from 'components/button';
-import { Counter } from 'components/counter';
-import { FaPlus } from 'react-icons/fa6';
 import { useEffect, useState } from 'react';
 import { PizzaData, PizzaParams } from 'types';
 import { useSearchParams } from 'react-router-dom';
+import { PizzaCard } from 'components/pizza-card';
 
 async function getData<T>({
                             category,
@@ -45,33 +43,9 @@ export default function PizzaList() {
   return (
     <div className={styles.pizzaList}>
       <ul className={styles.list}>
-        {pizzaData?.items.map(({ title, imageUrl, price }, i) => (
+        {pizzaData?.items.map((pizzaItem, i) => (
           <li key={i} className={styles.item}>
-            <img src={imageUrl} alt='title' width={260} height={260}/>
-            <h2>{title}</h2>
-
-            <ul className={styles.controls}>
-              <li>
-                <button className={styles.active}>тонкое</button>
-                <button>традиционное</button>
-              </li>
-
-              <li>
-                <button className={styles.active}>26 см.</button>
-                <button>30 см.</button>
-                <button>40 см.</button>
-              </li>
-            </ul>
-
-            <div className={styles.addTo}>
-              <p className={styles.price}>от {price} ₽</p>
-
-              <Button type={'outline'}>
-                <FaPlus/>
-                Добавить
-                <Counter value={2}/>
-              </Button>
-            </div>
+            <PizzaCard {...pizzaItem}/>
           </li>
         ))}
       </ul>

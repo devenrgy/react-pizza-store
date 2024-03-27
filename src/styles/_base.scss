@@ -41,6 +41,11 @@ button {
   cursor: pointer;
 }
 
+button[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 input {
   appearance: none;
   border: none;
@@ -48,6 +53,10 @@ input {
   font-family: inherit;
   font-size: inherit;
   background-color: transparent;
+
+  &[type='search']::-webkit-search-cancel-button {
+    display: none;
+  }
 }
 
 ul {
