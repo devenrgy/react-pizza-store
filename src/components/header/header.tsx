@@ -3,7 +3,7 @@ import styles from './header.module.scss';
 
 import { LuShoppingCart } from 'react-icons/lu';
 
-import { RootState } from 'store';
+import { RootState } from 'store/store.ts';
 import { useSelector } from 'react-redux';
 import { Search } from 'components/search';
 

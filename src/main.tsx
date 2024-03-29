@@ -8,9 +8,9 @@ import 'styles/index.scss';
 
 import { Root } from 'routes/root';
 import { Home } from 'routes/home';
-import Cart from 'routes/cart.tsx';
+import { Cart } from 'routes/cart';
 
-import { store } from 'store';
+import { store } from 'store/store.ts';
 
 import { Provider } from 'react-redux';
 

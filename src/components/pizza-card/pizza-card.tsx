@@ -7,7 +7,7 @@ import { Counter } from 'components/counter';
 import { PizzaItem } from 'types';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'store';
+import { RootState } from 'store/store.ts';
 import { add } from 'features/cart/cartSlice.ts';
 
 
