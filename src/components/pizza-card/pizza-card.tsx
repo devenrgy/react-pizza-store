@@ -1,27 +1,70 @@
-import styles from './pizza-card.module.scss';
-import { PIZZA_DOUGH, PIZZA_SIZES } from 'constants';
-import cn from 'lib/utils.ts';
-import { Button } from 'components/button';
+import { useEffect, useState } from 'react';
 import { FaPlus } from 'react-icons/fa6';
-import { Counter } from 'components/counter';
-import { PizzaItem } from 'types';
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'store/store.ts';
-import { add } from 'features/cart/cartSlice.ts';
 
+import { useDebouncedCallback } from 'use-debounce';
+
+import {
+  useAddPizzaItemMutation,
+  useGetCartPizzaItemsQuery,
+  useUpdatePizzaItemMutation,
+} from 'store/services/pizzaApi.ts';
+
+import { Button } from 'components/button';
+import { Counter } from 'components/counter';
+
+import cn from 'lib/utils.ts';
+
+import { PizzaItem } from 'types';
+
+import { PIZZA_DOUGH, PIZZA_SIZES } from 'constants';
+
+import styles from './pizza-card.module.scss';
 
 export default function PizzaCard({ title, imageUrl, types, sizes, price, id }: PizzaItem) {
-  const cartItems = useSelector((state: RootState) => state.cart.items);
-  const currentItemQuantites = cartItems.reduce((acc, item) => item.id === id ? acc + item.quantity : acc, 0);
-  const dispatch = useDispatch();
-
+  const { data: cartItems } = useGetCartPizzaItemsQuery();
+  const [updateCartPizzaItem] = useUpdatePizzaItemMutation();
+  const [addCartPizzaItem] = useAddPizzaItemMutation();
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
 
+  const identicalProducts = cartItems?.filter(item => item.pizzaID === id);
+  const identicalProductsQuantity = identicalProducts?.reduce((acc, item) => acc + item.quantity, 0) ?? 0;
+  const currentItem = cartItems?.find(item => item.pizzaID === id && item.type === PIZZA_DOUGH[activeType] && item.size === PIZZA_SIZES[activeSize]);
+  const currentItemQuantity = currentItem?.quantity ?? 0;
+  const [quantityAll, setQuantityAll] = useState(0);
+  const [quantity, setQuantity] = useState(0);
+
+  useEffect(() => {
+    setQuantityAll(identicalProductsQuantity);
+    setQuantity(currentItemQuantity);
+  }, [identicalProductsQuantity, currentItemQuantity]);
+
+  const sendRequest = useDebouncedCallback(() => {
+    if (currentItem && currentItemQuantity) {
+      updateCartPizzaItem({ id: currentItem.id, quantity });
+      return;
+    }
+
+    addCartPizzaItem({
+      imageUrl,
+      pizzaID: id,
+      title,
+      type: PIZZA_DOUGH[activeType],
+      size: PIZZA_SIZES[activeSize],
+      price,
+      quantity: quantity,
+    });
+  }, 300);
+
+  const handleClickAddToCart = () => {
+    setQuantityAll(quantityAll + 1);
+    setQuantity(quantity + 1);
+    sendRequest();
+  };
+
   return (
     <div className={styles.pizzaCard}>
-      <img src={imageUrl} alt='title' width={260} height={260}/>
+      <img src={imageUrl} alt="title" width={260} height={260}/>
       <h2>{title}</h2>
 
       <ul className={styles.controls}>
@@ -55,18 +98,10 @@ export default function PizzaCard({ title, imageUrl, types, sizes, price, id }: 
       <div className={styles.addTo}>
         <p className={styles.price}>от {price} ₽</p>
 
-        <Button onClick={() => dispatch(add({
-          id,
-          imageUrl,
-          title,
-          type: PIZZA_DOUGH[activeType],
-          size: PIZZA_SIZES[activeSize],
-          price,
-          quantity: 1,
-        }))} type={'outline'}>
+        <Button onClick={handleClickAddToCart} type={'outline'}>
           <FaPlus/>
           Добавить
-          {!!currentItemQuantites && <Counter value={currentItemQuantites}/>}
+          {!!quantityAll && <Counter value={quantityAll}/>}
         </Button>
       </div>
     </div>

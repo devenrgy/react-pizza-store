@@ -9,7 +9,18 @@ export type PizzaItem = {
   rating: number;
 };
 
-export interface PizzaData {
+export type CartPizzaItem = {
+  imageUrl: string,
+  id?: number,
+  pizzaID: number,
+  title: string,
+  type: string,
+  size: number,
+  price: number,
+  quantity: number,
+}
+
+export type PizzaData = {
   meta: Meta;
   items: PizzaItem[];
 }
@@ -20,7 +31,7 @@ export type PizzaParams = {
   q: string
 }
 
-export interface Meta {
+export type Meta = {
   total_items: number;
   total_pages: number;
   current_page: number;

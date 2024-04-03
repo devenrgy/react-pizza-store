@@ -1,21 +1,22 @@
 import { Link } from 'react-router-dom';
-import styles from './header.module.scss';
-
 import { LuShoppingCart } from 'react-icons/lu';
 
-import { RootState } from 'store/store.ts';
-import { useSelector } from 'react-redux';
-import { Search } from 'components/search';
+import { useGetCartPizzaItemsQuery } from 'store/services/pizzaApi';
+
+import { Search } from 'components/header/search';
+
+import styles from './header.module.scss';
 
 export default function Header() {
-  const cartItems = useSelector((state: RootState) => state.cart.items);
-  const totalAmount = cartItems.reduce((acc, item) => acc + item.price, 0);
-  const cartQuantity = cartItems.length;
+  const { data: cartItems } = useGetCartPizzaItemsQuery();
+
+  const totalAmount = cartItems?.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  const cartQuantity = cartItems?.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <header className={styles.header}>
-      <Link className={styles.logo} to='/'>
-        <img src='/icons/logo.svg' alt='Логотип Pizza Store' width={50} height={50}/>
+      <Link className={styles.logo} to="/">
+        <img src="/icons/logo.svg" alt="Логотип Pizza Store" width={50} height={50}/>
 
         <div>
           <p className={styles.title}>Pizza Store</p>
@@ -25,14 +26,17 @@ export default function Header() {
 
       <Search/>
 
-      <Link to='/cart' className={styles.cartBtn}>
-        {cartQuantity ? <>
-          <span>{totalAmount} ₽</span>
-          <span className={styles.cartSeparator}></span>
-          <span className={styles.cartQuantity}>
-          <LuShoppingCart size={18}/>
-            {cartQuantity}
-        </span></> : 'Корзина'}
+      <Link to="/cart" className={styles.cartBtn}>
+        {cartQuantity ?
+          <>
+            <span>{totalAmount} ₽</span>
+            <span className={styles.cartSeparator}></span>
+            <span className={styles.cartQuantity}>
+            <LuShoppingCart size={18}/>
+              {cartQuantity}
+            </span>
+          </>
+          : 'Корзина'}
       </Link>
     </header>
   );

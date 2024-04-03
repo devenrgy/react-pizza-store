@@ -28,3 +28,10 @@ export const CATEGORIES = [
 export const PIZZA_DOUGH = ['тонкое', 'традиционное'] as const;
 
 export const PIZZA_SIZES = [26, 30, 40] as const;
+
+export const SORT_LIST: Record<string, string> = {
+  rating: 'рейтингу',
+  price: 'возрастанию цены',
+  '-price': 'убыванию цены',
+  title: 'алфавиту',
+};

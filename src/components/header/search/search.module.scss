@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 $rad: 30px;
 $dur: .2s;
 $height: 50px;
@@ -22,7 +24,7 @@ $bez: linear;
   &:after {
     content: '';
     position: absolute;
-    top: ($size - $thickness) / 2;
+    top: math.div($size - $thickness, 2);
     left: 0;
     right: 0;
     height: $thickness;
