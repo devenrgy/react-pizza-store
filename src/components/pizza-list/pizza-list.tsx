@@ -1,4 +1,4 @@
-import { PizzaCard } from 'components/pizza-card';
+import { PizzaCard } from 'components/pizza-list/pizza-card';
 
 import { PizzaItem } from 'types';
 

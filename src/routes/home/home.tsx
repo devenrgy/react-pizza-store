@@ -3,6 +3,7 @@ import styles from './home.module.scss';
 import { Navbar } from 'components/navbar';
 import { Sort } from 'components/sort';
 import { PizzaList } from 'components/pizza-list';
+import { Pagination } from 'components/pagination';
 
 import { CATEGORIES } from 'constants';
 
@@ -33,7 +34,13 @@ export default function Home() {
 
         {isLoading && <p>Loading...</p>}
 
-        {data && <PizzaList items={data.items}/>}
+        {data &&
+          <>
+            <PizzaList items={data.items}/>
+            <Pagination setQueryParams={setQueryParams} currentPage={data.meta.current_page}
+                        totalPages={data.meta.total_pages}/>
+          </>
+        }
       </section>
     </div>
   );

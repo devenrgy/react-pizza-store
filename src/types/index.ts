@@ -28,7 +28,8 @@ export type PizzaData = {
 export type PizzaParams = {
   category: string,
   sort: string,
-  q: string
+  q: string,
+  page: string
 }
 
 export type Meta = {

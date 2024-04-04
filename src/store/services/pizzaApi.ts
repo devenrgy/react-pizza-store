@@ -8,11 +8,11 @@ export const pizzaApi = createApi({
   endpoints: (build) => ({
     getPizzaItems: build.query<PizzaData, PizzaParams>({
       query: (data) => {
-        const { category, sort = 'rating', q = '' } = data;
+        const { category, sort = 'rating', q = '', page } = data;
 
         return {
           url: 'items',
-          params: { page: 1, category, sortBy: sort, title: '*' + q, limit: 4 },
+          params: { page, category, sortBy: sort, title: '*' + q, limit: 4 },
         };
       },
 

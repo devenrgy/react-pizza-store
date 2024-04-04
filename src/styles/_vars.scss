@@ -1,6 +1,6 @@
 :root {
   color-scheme: dark;
-  
+
   --white: #fff;
   --black: #000;
 
@@ -16,6 +16,10 @@
   --category-bg: #262626;
   --category-active-bg: var(--color-primary);
   --category-bg-hover: #333;
+
+  --pagination-bg: #262626;
+  --pagination-active: var(--color-primary);
+  --pagination-hover: #333;
 
   --sort-bg: #000;
 
