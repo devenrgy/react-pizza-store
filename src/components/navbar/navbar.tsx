@@ -1,32 +1,22 @@
-import styles from './navbar.module.scss';
-import { CATEGORIES } from 'constants';
 import cn from 'lib/utils.ts';
-import { useSearchParams } from 'react-router-dom';
 
-export default function Navbar() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const currentCategory = searchParams.get('category') ?? '';
+import { CATEGORIES } from 'constants';
 
-  const handleClick = (nextCategory: string) => {
-    if (nextCategory === currentCategory) return;
+import styles from './navbar.module.scss';
 
-    setSearchParams(() => {
-      if (nextCategory) {
-        searchParams.set('category', nextCategory);
-        return searchParams;
-      }
-      searchParams.delete('category');
-      return searchParams;
-    });
-  };
+interface Props {
+  currentCategory: string,
+  setQueryParams: (key: string, param: string) => void
+}
 
+export default function Navbar({ currentCategory = '', setQueryParams }: Props) {
   return (
-    <nav className={styles.navbar}>
+    <nav>
       <ul className={styles.list}>
         {CATEGORIES.map(({ name, path }, i) => (
           <li key={i}>
             <button
-              onClick={() => handleClick(path)}
+              onClick={() => setQueryParams('category', path)}
               className={cn(styles.button, currentCategory === path && styles.active)}>
               {name}
             </button>

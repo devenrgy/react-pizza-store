@@ -31,11 +31,11 @@
   &:hover {
     color: var(--white);
     background-color: var(--color-primary);
-  }
 
-  &:hover [data-name='counter'] {
-    color: var(--color-primary);
-    background-color: var(--white);
+    & .counter {
+      color: var(--color-primary);
+      background-color: var(--white);
+    }
   }
 }
 
@@ -45,4 +45,23 @@
 
 .accent {
 
+}
+
+.counter {
+  aspect-ratio: 1 / 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1px;
+  min-width: 20px;
+  border-radius: 50%;
+
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--white);
+
+  background-color: var(--color-primary);
+
+  transition: .3s linear color, .3s linear background-color;
 }

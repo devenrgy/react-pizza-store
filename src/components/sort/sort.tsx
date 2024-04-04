@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { TiArrowSortedUp } from 'react-icons/ti';
 
 import cn from 'lib/utils';
@@ -10,16 +9,17 @@ import { SORT_LIST } from 'constants';
 
 import styles from './sort.module.scss';
 
-export default function Sort() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const currentSort = searchParams.get('sort') ?? 'rating';
+interface Props {
+  currentSort: string,
+  setQueryParams: (key: string, param: string) => void
+}
+
+export default function Sort({ currentSort = 'rating', setQueryParams }: Props) {
   const [menuVisibility, setMenuVisibility] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  const handleClick = (nextSort: string) => {
-    if (nextSort === currentSort) return;
-
-    setSearchParams({ ...Object.fromEntries(searchParams), sort: nextSort });
+  const handleSelectSort = (nextSort: string) => {
+    setQueryParams('sort', nextSort);
 
     setMenuVisibility(false);
   };
@@ -40,7 +40,7 @@ export default function Sort() {
         <ul className={styles.menu}>
           {Object.entries(SORT_LIST).map(([value, name], i) => (
             <li key={i} className={styles.item}>
-              <button onClick={() => handleClick(value)}
+              <button onClick={() => handleSelectSort(value)}
                       title={name}
                       className={cn(styles.button, currentSort === value && styles.active)}>{name}</button>
             </li>

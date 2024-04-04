@@ -1,21 +1,18 @@
-import { useSearchParams } from 'react-router-dom';
-
 import styles from './home.module.scss';
 
 import { Navbar } from 'components/navbar';
 import { Sort } from 'components/sort';
 import { PizzaList } from 'components/pizza-list';
 
-import { PizzaParams } from 'types';
-
 import { CATEGORIES } from 'constants';
+
+import useQueryParams from 'hooks/useQueryParams';
 
 import { useGetPizzaItemsQuery } from 'store/services/pizzaApi';
 
 export default function Home() {
-  const [searchParams] = useSearchParams();
-  const currentParams = Object.fromEntries(searchParams.entries()) as PizzaParams;
-  const { category } = currentParams;
+  const [currentParams, setQueryParams] = useQueryParams();
+  const { category, sort } = currentParams;
   const currentCategory = CATEGORIES.find(item => item.path === category)?.name ?? 'Все';
   const {
     data,
@@ -25,8 +22,8 @@ export default function Home() {
   return (
     <div className={styles.home}>
       <div className={styles.categories}>
-        <Navbar/>
-        <Sort/>
+        <Navbar currentCategory={category} setQueryParams={setQueryParams}/>
+        <Sort currentSort={sort} setQueryParams={setQueryParams}/>
       </div>
 
       <section>

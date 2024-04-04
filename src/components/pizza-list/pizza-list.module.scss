@@ -1,10 +1,5 @@
-.pizzaList {
-
-}
-
 .list {
   display: grid;
   gap: 35px;
-  grid-template-columns: repeat(4, 280px);
+  grid-template-columns: repeat(4, minmax(280px, 1fr));
 }
-

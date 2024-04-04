@@ -10,7 +10,6 @@ import {
 } from 'store/services/pizzaApi.ts';
 
 import { Button } from 'components/button';
-import { Counter } from 'components/counter';
 
 import cn from 'lib/utils.ts';
 
@@ -20,7 +19,10 @@ import { PIZZA_DOUGH, PIZZA_SIZES } from 'constants';
 
 import styles from './pizza-card.module.scss';
 
-export default function PizzaCard({ title, imageUrl, types, sizes, price, id }: PizzaItem) {
+interface Props extends PizzaItem {
+}
+
+export default function PizzaCard({ title, imageUrl, types, sizes, price, id }: Props) {
   const { data: cartItems } = useGetCartPizzaItemsQuery();
   const [updateCartPizzaItem] = useUpdatePizzaItemMutation();
   const [addCartPizzaItem] = useAddPizzaItemMutation();
@@ -56,7 +58,7 @@ export default function PizzaCard({ title, imageUrl, types, sizes, price, id }: 
     });
   }, 300);
 
-  const handleClickAddToCart = () => {
+  const handleAddToCart = () => {
     setQuantityAll(quantityAll + 1);
     setQuantity(quantity + 1);
     sendRequest();
@@ -98,10 +100,8 @@ export default function PizzaCard({ title, imageUrl, types, sizes, price, id }: 
       <div className={styles.addTo}>
         <p className={styles.price}>от {price} ₽</p>
 
-        <Button onClick={handleClickAddToCart} type={'outline'}>
-          <FaPlus/>
+        <Button icon={<FaPlus/>} onClick={handleAddToCart} variant={'outline'} counter={quantityAll}>
           Добавить
-          {!!quantityAll && <Counter value={quantityAll}/>}
         </Button>
       </div>
     </div>
