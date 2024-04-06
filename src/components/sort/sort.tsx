@@ -5,7 +5,7 @@ import cn from 'lib/utils';
 
 import useClickOutside from 'hooks/useClickOutside.ts';
 
-import { SORT_LIST } from 'constants';
+import { SORT_LIST } from 'consts';
 
 import styles from './sort.module.scss';
 

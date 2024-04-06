@@ -1,31 +1,25 @@
 import React from 'react';
+
 import ReactDOM from 'react-dom/client';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from 'react-router-dom';
-import 'styles/index.scss';
-
-import { Root } from 'routes/root';
-import { Home } from 'routes/home';
-import { Cart } from 'routes/cart';
-
-import { store } from 'store/store.ts';
-
 import { Provider } from 'react-redux';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Cart } from 'routes/cart';
+import { Home } from 'routes/home';
+import { Root } from 'routes/root';
+import { store } from 'store/store.ts';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root/>,
+    element: <Root />,
     children: [
       {
         index: true,
-        element: <Home/>,
+        element: <Home />,
       },
       {
         path: 'cart/',
-        element: <Cart/>,
+        element: <Cart />,
       },
     ],
   },
@@ -34,7 +28,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router}/>
+      <RouterProvider router={router} />
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

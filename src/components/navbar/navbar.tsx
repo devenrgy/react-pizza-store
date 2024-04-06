@@ -1,6 +1,6 @@
 import cn from 'lib/utils.ts';
 
-import { CATEGORIES } from 'constants';
+import { CATEGORIES } from 'consts';
 
 import styles from './navbar.module.scss';
 
@@ -10,13 +10,18 @@ interface Props {
 }
 
 export default function Navbar({ currentCategory = '', setQueryParams }: Props) {
+  const handleCurrentCategory = (path: string) => {
+    setQueryParams('page', '1');
+    setQueryParams('category', path);
+  };
+
   return (
     <nav>
       <ul className={styles.list}>
         {CATEGORIES.map(({ name, path }, i) => (
           <li key={i}>
             <button
-              onClick={() => setQueryParams('category', path)}
+              onClick={() => handleCurrentCategory(path)}
               className={cn(styles.button, currentCategory === path && styles.active)}>
               {name}
             </button>

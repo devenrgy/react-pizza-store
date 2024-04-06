@@ -5,7 +5,7 @@ import { Sort } from 'components/sort';
 import { PizzaList } from 'components/pizza-list';
 import { Pagination } from 'components/pagination';
 
-import { CATEGORIES } from 'constants';
+import { CATEGORIES } from 'consts';
 
 import useQueryParams from 'hooks/useQueryParams';
 

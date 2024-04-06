@@ -1,14 +1,12 @@
 .button {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @extend .flex-center-between;
+  @include transition((color, background-color), .3s, linear);
+
   border-radius: 30px;
   gap: 8px;
+
   font-size: 1rem;
   font-weight: 700;
-  color: var(--white);
-
-  transition: .3s linear color, .3s linear background-color;
 }
 
 .small {
@@ -48,13 +46,11 @@
 }
 
 .counter {
-  aspect-ratio: 1 / 1;
+  @extend .flex-center;
+  @include circle(20px);
+  @include transition((color, background-color), .3s, linear);
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
   padding: 1px;
-  min-width: 20px;
   border-radius: 50%;
 
   font-size: 13px;
@@ -62,6 +58,4 @@
   color: var(--white);
 
   background-color: var(--color-primary);
-
-  transition: .3s linear color, .3s linear background-color;
 }

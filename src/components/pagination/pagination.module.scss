@@ -1,38 +1,40 @@
 .pagination {
-  display: flex;
-  justify-content: center;
+  @extend .flex-center;
   gap: 20px;
-  align-items: center;
   user-select: none;
 }
 
-
 .item, .break {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  aspect-ratio: 1;
-  height: 40px;
-  border-radius: 50%;
+  @include transition((background-color, scale), .3s, linear);
+  @include circle(40px);
+  @extend .flex-center;
+
   background-color: var(--pagination-bg);
 
   &:hover:not(.active) {
-    cursor: pointer;
     background-color: var(--pagination-hover);
+    scale: 1.1;
+    cursor: pointer;
   }
-
-  transition: background-color .3s linear;
 }
 
-
 .prev, .next {
-  cursor: pointer;
-  margin: 0 30px;
+  @include transition((opacity, background-color), .3s, linear);
+  @include circle(40px);
+  @extend .flex-center;
 
-  transition: opacity .3s linear;
+  margin: 0 30px;
+  opacity: 100%;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgb(#333, 60%);
+  }
 }
 
 .active {
+  scale: 1.2;
   background-color: var(--pagination-active);
 }
 

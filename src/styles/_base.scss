@@ -13,7 +13,8 @@ html {
   box-sizing: inherit;
 }
 
-html, body {
+html,
+body {
   min-height: 100%;
 }
 
@@ -27,7 +28,10 @@ body {
   background: var(--app-bg-outer);
 }
 
-h1, h2, h3, p {
+h1,
+h2,
+h3,
+p {
   margin: 0;
 }
 

@@ -1,0 +1,52 @@
+@use 'sass:math';
+
+@mixin transition($property, $dur, $timeFunc) {
+  transition-property: $property;
+  transition-duration: .3s;
+  transition-timing-function: linear;
+}
+
+@mixin circle($height) {
+  aspect-ratio: 1;
+  height: $height;
+  border-radius: 50%;
+}
+
+@mixin cross($size: 20px, $color: currentColor, $thickness: 1px) {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  position: absolute;
+  top: 50%;
+  right: 70px;
+  z-index: 2;
+  width: $size;
+  height: $size;
+
+  translate: 0 -50%;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: math.div($size - $thickness, 2);
+    left: 0;
+    right: 0;
+    height: $thickness;
+    background: $color;
+    border-radius: $thickness;
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+
+  span {
+    display: block;
+  }
+}

@@ -1,6 +1,7 @@
 .pizzaCard {
   display: grid;
   gap: 0;
+  width: 280px;
   grid-template-rows: subgrid;
   grid-row: span 4;
 
@@ -34,14 +35,14 @@
   }
 
   button {
+    @include transition((background-color, box-shadow), .2s, linear);
+
     padding: 10px 20px;
     flex: 1;
     border-radius: 5px;
 
     font-size: 14px;
     font-weight: 700;
-
-    transition: .2s linear background-color, .2s linear box-shadow;
 
     &:not(.active):hover {
       background: rgb(0, 0, 0, 30%);
@@ -56,9 +57,7 @@
 }
 
 .addTo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @extend .flex-center-between;
 }
 
 .price {
