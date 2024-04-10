@@ -7,7 +7,7 @@ import styles from './root.module.scss';
 export default function Root() {
   return (
     <div className={styles.root}>
-      <video preload='none' className={styles.video} autoPlay muted loop>
+      <video className={styles.video} autoPlay muted loop>
         <source src='/video/bg.mp4' type='video/mp4' />
       </video>
 
