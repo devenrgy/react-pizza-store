@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
 
 import useQueryParams from 'hooks/useQueryParams';
@@ -25,19 +25,19 @@ export default function Home() {
     page: page ?? '1',
     q: q ?? '',
   });
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const isFirstLoading = useRef(true);
 
-  useEffect(() => {
-    if (!isFetching) {
-      setTimeout(() => {
-        setIsLoading(false);
-        isFirstLoading.current = false;
-      }, 500);
-    } else {
-      setIsLoading(true);
-    }
-  }, [isFetching]);
+  // useEffect(() => {
+  //   if (!isFetching) {
+  //     setTimeout(() => {
+  //       setIsLoading(false);
+  //       isFirstLoading.current = false;
+  //     }, 500);
+  //   } else {
+  //     setIsLoading(true);
+  //   }
+  // }, [isFetching]);
 
   const handleNotFoundPizza = () => {
     setQueryParams('q', '');
@@ -53,7 +53,7 @@ export default function Home() {
       <section className={styles.section}>
         <h1 className={styles.title}>{currentCategory} пиццы</h1>
 
-        {isLoading ? (
+        {isFetching ? (
           <ThreeDots
             visible={true}
             height='80'
