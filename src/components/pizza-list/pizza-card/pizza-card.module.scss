@@ -10,7 +10,9 @@
     aspect-ratio: 1;
     width: 260px;
     height: 260px;
+    clip-path: circle(125px at center);
     margin: 0 auto 10px;
+    image-rendering: smooth;
   }
 
   h2 {
