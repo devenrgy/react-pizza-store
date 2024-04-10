@@ -78,7 +78,7 @@ export default function PizzaCard({ title, imageUrl, types, sizes, price, id }: 
       }}
       className={styles.pizzaCard}
     >
-      <img src={imageUrl} alt='title' width={260} height={260} />
+      <img src={imageUrl} alt={`Пицца ${title}`} width={260} height={260} />
       <h2>{title}</h2>
 
       <ul className={styles.controls}>

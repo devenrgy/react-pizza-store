@@ -7,7 +7,7 @@ import { PizzaItem } from 'types';
 import styles from './pizza-list.module.scss';
 
 interface Props {
-  items: PizzaItem[],
+  items: PizzaItem[];
 }
 
 export default function PizzaList({ items }: Props) {
@@ -15,7 +15,7 @@ export default function PizzaList({ items }: Props) {
     <motion.ul className={styles.list} layout layoutRoot>
       <AnimatePresence mode={'wait'} initial={false}>
         {items.map((item) => (
-          <PizzaCard key={item.id} {...item}/>
+          <PizzaCard key={item.id} {...item} />
         ))}
       </AnimatePresence>
     </motion.ul>

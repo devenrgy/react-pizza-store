@@ -1,6 +1,6 @@
 .button {
-  @extend .flex-center-between;
-  @include transition((color, background-color), .3s, linear);
+  @extend .flex-center;
+  @include transition((color, background-color), 0.3s, linear);
 
   border-radius: 30px;
   gap: 8px;
@@ -10,7 +10,6 @@
 }
 
 .small {
-
 }
 
 .medium {
@@ -42,13 +41,12 @@
 }
 
 .accent {
-
 }
 
 .counter {
   @extend .flex-center;
   @include circle(20px);
-  @include transition((color, background-color), .3s, linear);
+  @include transition((color, background-color), 0.3s, linear);
 
   padding: 1px;
   border-radius: 50%;

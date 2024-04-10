@@ -1,16 +1,19 @@
-import styles from './pagination.module.scss';
-import ReactPaginate from 'react-paginate';
 import { IoMdArrowRoundBack, IoMdArrowRoundForward } from 'react-icons/io';
+import ReactPaginate from 'react-paginate';
+
+import useQueryParams from 'hooks/useQueryParams';
+
+import styles from './pagination.module.scss';
 
 interface Props {
-  currentPage: number,
-  totalPages: number
-  setQueryParams: (key: string, param: string) => void
+  currentPage: number;
+  totalPages: number;
 }
 
-export default function Pagination({ currentPage = 1, totalPages, setQueryParams }: Props) {
+export default function Pagination({ currentPage, totalPages }: Props) {
+  const [, setCurrentPage] = useQueryParams();
   const handleChangePage = ({ selected }: { selected: number }) => {
-    setQueryParams('page', (selected + 1).toString());
+    setCurrentPage('page', (selected + 1).toString());
   };
 
   return (
@@ -22,12 +25,12 @@ export default function Pagination({ currentPage = 1, totalPages, setQueryParams
       nextLinkClassName={styles.next}
       breakLinkClassName={styles.break}
       disabledClassName={styles.disabled}
-      breakLabel="..."
-      nextLabel={<IoMdArrowRoundForward size={30}/>}
+      breakLabel='...'
+      nextLabel={<IoMdArrowRoundForward size={30} />}
       onPageChange={handleChangePage}
       forcePage={currentPage - 1}
       pageCount={totalPages}
-      previousLabel={<IoMdArrowRoundBack size={30}/>}
+      previousLabel={<IoMdArrowRoundBack size={30} />}
     />
   );
 }

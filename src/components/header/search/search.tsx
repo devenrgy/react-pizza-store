@@ -5,15 +5,17 @@ import useQueryParams from 'hooks/useQueryParams.ts';
 import styles from './search.module.scss';
 
 type SearchForm = {
-  search: string
-}
+  search: string;
+};
 
 export default function Search() {
-  const [, setQueryParams] = useQueryParams();
+  const [currentParams, setQueryParams] = useQueryParams();
+  const { q } = currentParams;
   const { register, handleSubmit, resetField, setFocus } = useForm<SearchForm>();
 
   const handleSubmitForm = ({ search }: SearchForm) => {
     setQueryParams('q', search);
+    setQueryParams('page', '1');
   };
 
   const handleResetSearch = () => {
@@ -30,8 +32,10 @@ export default function Search() {
             {...register('search')}
             autoComplete={'off'}
             className={styles.input}
-            type="search"
-            placeholder={'Поиск пиццы...'}/>
+            value={q}
+            type='search'
+            placeholder={'Поиск пиццы...'}
+          />
           <button type={'button'} onClick={handleResetSearch} className={styles.clear}></button>
         </label>
 

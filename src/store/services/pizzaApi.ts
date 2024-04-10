@@ -1,5 +1,6 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { CartPizzaItem, PizzaData, PizzaParams } from 'types';
+
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const pizzaApi = createApi({
   reducerPath: 'pizzaApi',
@@ -8,7 +9,7 @@ export const pizzaApi = createApi({
   endpoints: (build) => ({
     getPizzaItems: build.query<PizzaData, PizzaParams>({
       query: (data) => {
-        const { category, sort = 'rating', q = '', page } = data;
+        const { category, sort, q, page } = data;
 
         return {
           url: 'items',
@@ -18,20 +19,14 @@ export const pizzaApi = createApi({
 
       providesTags: (result) =>
         result
-          ? [
-            ...result.items.map(({ id }) => ({ type: 'PizzaItems' as const, id })),
-            { type: 'PizzaItems', id: 'LIST' },
-          ]
+          ? [...result.items.map(({ id }) => ({ type: 'PizzaItems' as const, id })), { type: 'PizzaItems', id: 'LIST' }]
           : [{ type: 'PizzaItems', id: 'LIST' }],
     }),
     getCartPizzaItems: build.query<CartPizzaItem[], void>({
       query: () => 'cart',
       providesTags: (result) =>
         result
-          ? [
-            ...result.map(({ id }) => ({ type: 'PizzaItems' as const, id })),
-            { type: 'PizzaItems', id: 'LIST' },
-          ]
+          ? [...result.map(({ id }) => ({ type: 'PizzaItems' as const, id })), { type: 'PizzaItems', id: 'LIST' }]
           : [{ type: 'PizzaItems', id: 'LIST' }],
     }),
     addPizzaItem: build.mutation<CartPizzaItem, CartPizzaItem>({
