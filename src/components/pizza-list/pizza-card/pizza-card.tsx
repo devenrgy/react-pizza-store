@@ -68,12 +68,12 @@ export default function PizzaCard({ title, imageUrl, types, sizes, price, id }: 
 
   return (
     <motion.li
-      initial={{ opacity: 0, y: -200, scale: 0.8 }}
-      animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-      exit={{ opacity: 0, x: -200 }}
-      whileHover={{ scale: 1.05 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      whileHover={{ scale: 1.02 }}
       transition={{
-        duration: 0.5,
+        duration: 0.3,
         ease: 'easeInOut',
       }}
       className={styles.pizzaCard}
