@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const pizzaApi = createApi({
   reducerPath: 'pizzaApi',
-  tagTypes: ['PizzaItems'],
+  tagTypes: ['PizzaItems', 'CartPizzaItems'],
   baseQuery: fetchBaseQuery({ baseUrl: 'https://4275eac693d4b299.mokky.dev/' }),
   endpoints: (build) => ({
     getPizzaItems: build.query<PizzaData, PizzaParams>({
@@ -26,8 +26,11 @@ export const pizzaApi = createApi({
       query: () => 'cart',
       providesTags: (result) =>
         result
-          ? [...result.map(({ id }) => ({ type: 'PizzaItems' as const, id })), { type: 'PizzaItems', id: 'LIST' }]
-          : [{ type: 'PizzaItems', id: 'LIST' }],
+          ? [
+              ...result.map(({ id }) => ({ type: 'CartPizzaItems' as const, id })),
+              { type: 'CartPizzaItems', id: 'LIST' },
+            ]
+          : [{ type: 'CartPizzaItems', id: 'LIST' }],
     }),
     addPizzaItem: build.mutation<CartPizzaItem, CartPizzaItem>({
       query(body) {
@@ -37,7 +40,7 @@ export const pizzaApi = createApi({
           body,
         };
       },
-      invalidatesTags: [{ type: 'PizzaItems', id: 'LIST' }],
+      invalidatesTags: [{ type: 'CartPizzaItems', id: 'LIST' }],
     }),
     updatePizzaItem: build.mutation<CartPizzaItem, Partial<CartPizzaItem>>({
       query(data) {
@@ -48,7 +51,7 @@ export const pizzaApi = createApi({
           body,
         };
       },
-      invalidatesTags: [{ type: 'PizzaItems', id: 'LIST' }],
+      invalidatesTags: [{ type: 'CartPizzaItems', id: 'LIST' }],
     }),
     deletePizzaItem: build.mutation<{ success: boolean; id: number }, number>({
       query(id) {
@@ -57,7 +60,7 @@ export const pizzaApi = createApi({
           method: 'DELETE',
         };
       },
-      invalidatesTags: (_, __, id) => [{ type: 'PizzaItems', id }],
+      invalidatesTags: (_, __, id) => [{ type: 'CartPizzaItems', id }],
     }),
   }),
 });

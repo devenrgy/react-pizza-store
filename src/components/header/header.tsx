@@ -10,13 +10,13 @@ import styles from './header.module.scss';
 export default function Header() {
   const { data: cartItems } = useGetCartPizzaItemsQuery();
 
-  const totalAmount = cartItems?.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  const totalAmount = cartItems?.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const cartQuantity = cartItems?.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
     <header className={styles.header}>
-      <Link className={styles.logo} to="/">
-        <img src="/icons/logo.svg" alt="Логотип Pizza Store" width={50} height={50}/>
+      <Link className={styles.logo} to='/'>
+        <img src='/icons/logo.svg' alt='Логотип Pizza Store' width={50} height={50} />
 
         <div>
           <p className={styles.title}>Pizza Store</p>
@@ -24,19 +24,21 @@ export default function Header() {
         </div>
       </Link>
 
-      <Search/>
+      <Search />
 
-      <Link to="/cart" className={styles.cartBtn}>
-        {cartQuantity ?
+      <Link to='/cart' className={styles.cartBtn}>
+        {cartQuantity ? (
           <>
             <span>{totalAmount} ₽</span>
             <span className={styles.cartSeparator}></span>
             <span className={styles.cartQuantity}>
-            <LuShoppingCart size={18}/>
+              <LuShoppingCart size={18} />
               {cartQuantity}
             </span>
           </>
-          : 'Корзина'}
+        ) : (
+          'Корзина'
+        )}
       </Link>
     </header>
   );
