@@ -32,14 +32,14 @@ export default function Search() {
             {...register('search')}
             autoComplete={'off'}
             className={styles.input}
-            value={q}
+            defaultValue={q}
             type='search'
             placeholder={'Поиск пиццы...'}
           />
           <button type={'button'} onClick={handleResetSearch} className={styles.clear}></button>
         </label>
 
-        <button className={styles.btn}></button>
+        <button type='submit' className={styles.btn}></button>
       </form>
     </search>
   );

@@ -1,4 +1,20 @@
 .root {
+}
+
+.wrapper {
+  max-width: 1400px;
+  margin: 30px auto 30px;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  min-height: calc(100vh - 60px);
+  border-radius: 10px;
+  padding: 30px 50px 70px;
+  box-shadow: 0 15px 20px 0 rgb(0, 0, 0, 0.03);
+  background: rgb(#000, 70%);
+  backdrop-filter: blur(20px);
+}
+
+.videoWrapper {
   &::after {
     content: '';
     position: fixed;
@@ -9,17 +25,6 @@
     z-index: -1;
     background: rgb(0, 0, 0, 50%);
   }
-}
-
-.wrapper {
-  max-width: 1400px;
-  margin: 30px auto 30px;
-  display: grid;
-  border-radius: 10px;
-  padding: 30px 50px 70px;
-  box-shadow: 0 15px 20px 0 rgb(0, 0, 0, 0.03);
-  background: rgb(#000, 70%);
-  backdrop-filter: blur(20px);
 }
 
 .video {

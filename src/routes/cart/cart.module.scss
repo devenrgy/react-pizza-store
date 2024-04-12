@@ -1,9 +1,34 @@
 .cart {
-
+  height: 100%;
 }
 
 .title {
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 35px;
+}
+
+.emptyCart {
+  margin-top: 100px;
+  text-align: center;
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin-bottom: 50px;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  img {
+    position: absolute;
+    right: 80px;
+    bottom: 80px;
+  }
+
+  button {
+    margin: 0 auto;
+  }
 }

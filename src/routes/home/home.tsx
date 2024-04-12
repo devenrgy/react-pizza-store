@@ -49,8 +49,6 @@ export default function Home() {
       </div>
 
       <section className={styles.section}>
-        <h1 className={styles.title}>{currentCategory} пиццы</h1>
-
         {isLoading ? (
           <ThreeDots
             visible={true}
@@ -63,15 +61,18 @@ export default function Home() {
             wrapperClass={styles.loader}
           />
         ) : data?.items.length ? (
-          <>
+          <div>
+            <h1 className={styles.title}>{currentCategory} пиццы</h1>
             <PizzaList items={data.items} />
-          </>
+          </div>
         ) : (
           <div className={styles.notFound}>
-            <h3>
-              Извините, но этот вариант пиццы временно отсутствует. <br /> Почему бы не попробовать что-то другое из
-              нашего разнообразного меню?
-            </h3>
+            <h1 className={styles.title}>Не удалось найти «{q?.toLocaleLowerCase()}» пиццу...</h1>
+
+            <p>Почему бы вам не попробовать поискать что-то другое?</p>
+
+            <img src='/images/not-found.png' width={256} alt='Пицца не найдена' />
+
             <Button onClick={handleNotFoundPizza} size='large' variant='outline'>
               Назад
             </Button>

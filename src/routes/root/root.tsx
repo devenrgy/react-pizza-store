@@ -7,9 +7,11 @@ import styles from './root.module.scss';
 export default function Root() {
   return (
     <div className={styles.root}>
-      <video className={styles.video} autoPlay muted loop>
-        <source src='/video/bg.mp4' type='video/mp4' />
-      </video>
+      <div className={styles.videoWrapper}>
+        <video className={styles.video} autoPlay muted loop>
+          <source src='/video/bg.mp4' type='video/mp4' />
+        </video>
+      </div>
 
       <div className={styles.wrapper}>
         <Header />
