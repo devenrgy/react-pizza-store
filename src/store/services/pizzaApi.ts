@@ -62,6 +62,16 @@ export const pizzaApi = createApi({
       },
       invalidatesTags: (_, __, id) => [{ type: 'CartPizzaItems', id }],
     }),
+    deleteAllPizzaItems: build.mutation<{ success: boolean }, void>({
+      query() {
+        return {
+          url: `cart/`,
+          method: 'PATCH',
+          body: [],
+        };
+      },
+      invalidatesTags: [{ type: 'CartPizzaItems', id: 'LIST' }],
+    }),
   }),
 });
 
@@ -71,4 +81,5 @@ export const {
   useGetCartPizzaItemsQuery,
   useUpdatePizzaItemMutation,
   useDeletePizzaItemMutation,
+  useDeleteAllPizzaItemsMutation,
 } = pizzaApi;

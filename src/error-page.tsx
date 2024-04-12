@@ -21,7 +21,7 @@ export default function ErrorPage() {
   return (
     <section className={styles.errorPage}>
       <div>
-        <h1 className={styles.title}>Ууупс... Что-то пошло не так...</h1>
+        <h1 className={styles.title}>Ой! Что-то пошло не так!</h1>
         <img src='/images/error-page.png' width={256} alt='Стикер с удивленной пиццей' />
         <Button variant='accent' size='large' onClick={() => navigate('/')}>
           На главную

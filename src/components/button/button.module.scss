@@ -38,6 +38,9 @@
 
 .primary {
   background: var(--color-primary);
+  &:hover {
+    background: var(--color-primary-hover);
+  }
 }
 
 .accent {
