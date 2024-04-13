@@ -55,11 +55,13 @@ export default function Home() {
           </div>
         ) : (
           <div className={styles.notFound}>
-            <h1 className={styles.title}>Не удалось найти «{q?.toLocaleLowerCase()}» пиццу...</h1>
+            <h1 className={styles.title}>
+              {q ? `Не удалось найти «{q?.toLocaleLowerCase()}» пиццу...` : 'Не удалось загрузить данные...'}
+            </h1>
 
-            <p>Почему бы вам не попробовать поискать что-то другое?</p>
+            {q && <p>Почему бы вам не попробовать поискать что-то другое?</p>}
 
-            <img src='/images/not-found.png' width={256} alt='Пицца не найдена' />
+            <img src='/images/not-found.avif' width={256} alt='Пицца не найдена' />
 
             <Button onClick={handleNotFoundPizza} size='large' variant='outline'>
               Назад

@@ -1,5 +1,5 @@
 $rad: 30px;
-$dur: .2s;
+$dur: 0.2s;
 $height: 50px;
 $btn-width: 60px;
 $bez: linear;
@@ -24,7 +24,8 @@ $bez: linear;
   }
 }
 
-.input, .btn {
+.input,
+.btn {
   height: $height;
   border: 0;
   font-size: 18px;
@@ -61,7 +62,7 @@ $bez: linear;
 
 .clear {
   @include cross(20px, #fff, 3px);
-  @include transition((visibility, opacity), .2s, ease);
+  @include transition((visibility, opacity), 0.2s, ease);
 
   padding: 5px;
 
@@ -71,7 +72,7 @@ $bez: linear;
 
 .btn {
   @extend .flex-center;
-  @include transition((background-color, visibility), .3s, ease);
+  @include transition((background-color, visibility), 0.3s, ease);
 
   position: absolute;
   top: 0;
@@ -88,7 +89,8 @@ $bez: linear;
     background-color: var(--color-primary-hover);
   }
 
-  &::before, &::after {
+  &::before,
+  &::after {
     content: '';
     display: block;
     position: absolute;

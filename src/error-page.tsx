@@ -1,8 +1,4 @@
-import {
-  isRouteErrorResponse,
-  useNavigate,
-  useRouteError,
-} from 'react-router-dom';
+import { isRouteErrorResponse, useNavigate, useRouteError } from 'react-router-dom';
 
 import { Button } from 'components/button';
 
@@ -22,7 +18,7 @@ export default function ErrorPage() {
     <section className={styles.errorPage}>
       <div>
         <h1 className={styles.title}>Ой! Что-то пошло не так!</h1>
-        <img src='/images/error-page.png' width={256} alt='Стикер с удивленной пиццей' />
+        <img src='/images/error-page.avif' width={256} alt='Стикер с удивленной пиццей' />
         <Button variant='accent' size='large' onClick={() => navigate('/')}>
           На главную
         </Button>

@@ -109,7 +109,7 @@ export default function Cart() {
         <div className={styles.emptyCart}>
           <h1 className={styles.title}>Корзина пустая</h1>
           <p>Подумайте, какое волшебство вы можете сюда положить...</p>
-          <img src='/images/empty-cart.png' width={256} alt='Корзина пустая' />
+          <img src='/images/empty-cart.avif' width={256} alt='Корзина пустая' />
           <Link to={'/'}>
             <Button size='large' variant='outline'>
               Назад
