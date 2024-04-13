@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
 
 import useQueryParams from 'hooks/useQueryParams';
@@ -19,23 +18,12 @@ export default function Home() {
   const [currentParams, setQueryParams] = useQueryParams();
   const { category, sort, page, q } = currentParams;
   const currentCategory = CATEGORIES.find((item) => item.path === category)?.name ?? 'Все';
-  const { data, isFetching } = useGetPizzaItemsQuery({
+  const { data, isLoading } = useGetPizzaItemsQuery({
     category,
     sort: sort ?? 'rating',
     page: page ?? '1',
     q: q ?? '',
   });
-  const [isLoading, setIsLoading] = useState(true);
-  const isFirstLoading = useRef(true);
-
-  useEffect(() => {
-    if (!isFetching) {
-      setIsLoading(false);
-      isFirstLoading.current = false;
-    } else {
-      setIsLoading(true);
-    }
-  }, [isFetching]);
 
   const handleNotFoundPizza = () => {
     setQueryParams('q', '');
@@ -79,7 +67,7 @@ export default function Home() {
           </div>
         )}
 
-        {!isFirstLoading.current && !!data?.meta.total_pages && (
+        {data && data.meta.total_pages > 1 && (
           <Pagination currentPage={data.meta.current_page} totalPages={data.meta.total_pages} />
         )}
       </section>

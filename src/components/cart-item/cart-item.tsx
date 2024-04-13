@@ -1,6 +1,8 @@
 import { FaMinus, FaPlus } from 'react-icons/fa6';
 import { IoClose } from 'react-icons/io5';
 
+import { motion } from 'framer-motion';
+
 import cn from 'lib/utils';
 
 import { CartPizzaItem } from 'types';
@@ -26,7 +28,16 @@ export default function CartItem({
   removePizzaItem,
 }: Props) {
   return (
-    <li className={styles.cartItem}>
+    <motion.li
+      layout
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ x: -200, opacity: 0 }}
+      className={styles.cartItem}
+      transition={{
+        duration: 0.3,
+        ease: 'easeInOut',
+      }}
+    >
       <div className={styles.description}>
         <img src={imageUrl} width='80' height='80' alt='some text' />
         <div>
@@ -49,6 +60,6 @@ export default function CartItem({
       <button className={styles.remove} onClick={() => removePizzaItem(id!)}>
         <IoClose size={20} />
       </button>
-    </li>
+    </motion.li>
   );
 }

@@ -1,6 +1,12 @@
 .cart {
-  height: 100%;
+  margin-top: 100px;
   font-size: 18px;
+}
+
+.loader {
+  display: flex;
+  margin-top: 100px;
+  place-content: center;
 }
 
 .title {
@@ -10,7 +16,6 @@
 }
 
 .emptyCart {
-  margin-top: 100px;
   text-align: center;
 
   h1 {
@@ -70,10 +75,12 @@
 
 .list {
   display: grid;
-  align-items: start;
-  justify-content: space-between;
+  align-content: start;
+  margin-bottom: 40px;
+  gap: 30px;
   overflow-y: scroll;
-  height: 300px;
+  min-height: 300px;
+  max-height: 600px;
 
   scrollbar-width: thin;
   scrollbar-color: var(--color-primary) transparent;

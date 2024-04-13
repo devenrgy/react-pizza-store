@@ -1,7 +1,10 @@
 import { FaTrashCan } from 'react-icons/fa6';
 import { LuArrowLeft } from 'react-icons/lu';
 import { RiShoppingCartLine } from 'react-icons/ri';
+import { ThreeDots } from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
+
+import { AnimatePresence } from 'framer-motion';
 
 import {
   useDeleteAllPizzaItemsMutation,
@@ -42,7 +45,18 @@ export default function Cart() {
   return (
     <section className={styles.cart}>
       {isLoading ? (
-        <p>Загрузка</p>
+        <div className={styles.loader}>
+          <ThreeDots
+            visible={true}
+            height='80'
+            width='80'
+            color='#dc2f02'
+            radius='9'
+            ariaLabel='three-dots-loading'
+            wrapperStyle={{}}
+            wrapperClass={styles.loader}
+          />
+        </div>
       ) : data?.length ? (
         <div className={styles.content}>
           <div className={styles.header}>
@@ -57,15 +71,17 @@ export default function Cart() {
           </div>
 
           <ul className={styles.list}>
-            {data.map((item) => (
-              <CartItem
-                key={item.id}
-                {...item}
-                incrementPizzaItem={handleIncrementPizzaItem}
-                decrementPizzaItem={handleDecrementPizzaItem}
-                removePizzaItem={handleRemovePizzaItem}
-              />
-            ))}
+            <AnimatePresence mode='popLayout'>
+              {data.map((item) => (
+                <CartItem
+                  key={item.id}
+                  {...item}
+                  incrementPizzaItem={handleIncrementPizzaItem}
+                  decrementPizzaItem={handleDecrementPizzaItem}
+                  removePizzaItem={handleRemovePizzaItem}
+                />
+              ))}
+            </AnimatePresence>
           </ul>
 
           <div className={styles.info}>
@@ -79,7 +95,7 @@ export default function Cart() {
 
           <div className={styles.controls}>
             <Link to={'/'}>
-              <Button size={'large'} variant={'primary'}>
+              <Button size={'large'} variant={'outline'}>
                 <LuArrowLeft size={20} />
                 Вернуться назад
               </Button>

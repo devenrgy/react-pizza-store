@@ -13,7 +13,7 @@ interface Props {
 export default function PizzaList({ items }: Props) {
   return (
     <motion.ul className={styles.list} layout layoutRoot>
-      <AnimatePresence mode={'wait'} initial={false}>
+      <AnimatePresence mode={'wait'}>
         {items.map((item) => (
           <PizzaCard key={item.id} {...item} />
         ))}
