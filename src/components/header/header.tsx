@@ -5,6 +5,8 @@ import { useGetCartPizzaItemsQuery } from 'store/services/pizzaApi';
 
 import { Search } from 'components/header/search';
 
+import cn from 'lib/utils';
+
 export default function Header() {
   const { data: cartItems } = useGetCartPizzaItemsQuery();
   const { pathname } = useLocation();
@@ -17,7 +19,12 @@ export default function Header() {
   const cartQuantity = cartItems?.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <header className='mb-10 flex flex-col flex-wrap items-center gap-10 border-b border-neutral-800 pb-10 sm:gap-20'>
+    <header
+      className={cn(
+        'mb-10 flex flex-col flex-wrap items-center gap-10 border-b border-neutral-800 pb-10 sm:gap-20',
+        { hidden: isCartPage }
+      )}
+    >
       <Link className='flex flex-col items-center gap-5 text-center' to='/'>
         <img
           src='/icons/logo.svg'

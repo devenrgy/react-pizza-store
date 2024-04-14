@@ -30,11 +30,12 @@ export default function Home() {
 
   return (
     <div>
-      <div className='mb-7 flex flex-wrap items-center justify-between'>
-        <Navbar currentCategory={category} setQueryParams={setQueryParams} />
-        <Sort currentSort={sort} setQueryParams={setQueryParams} />
-      </div>
-
+      {!q && (
+        <div className='mb-7 flex flex-wrap items-center justify-between gap-5'>
+          <Navbar currentCategory={category} setQueryParams={setQueryParams} />
+          <Sort currentSort={sort} setQueryParams={setQueryParams} />
+        </div>
+      )}
       <section className='has-[.notFound]:min-h-[auto] has-[.notFound]:grid-rows-[1fr]'>
         {isLoading ? (
           <div className='mt-32 flex justify-center'>
@@ -49,11 +50,15 @@ export default function Home() {
           </div>
         ) : data?.items.length ? (
           <div>
-            <h1 className='mb-8 text-3xl font-bold'>{currentCategory} пиццы</h1>
+            {!q && (
+              <h1 id='top' className='mb-8 text-3xl font-bold'>
+                {currentCategory} пиццы
+              </h1>
+            )}
             <PizzaList items={data.items} />
           </div>
         ) : (
-          <div className='notFound mt-24 max-w-[800px] justify-self-center text-center'>
+          <div className='notFound mt-12 flex max-w-[800px] flex-col items-center justify-self-center text-center sm:mt-24'>
             <h1 className='mb-5 text-3xl font-bold'>
               {q
                 ? `Не удалось найти «${q?.toLocaleLowerCase()}» пиццу...`
@@ -62,19 +67,19 @@ export default function Home() {
 
             {q && (
               <p className='mb-12 text-lg'>
-                Почему бы вам не попробовать поискать что-то другое?
+                Почему&nbsp;бы вам не&nbsp;попробовать поискать что-то другое?
               </p>
             )}
 
             <img
-              className='absolute bottom-20 right-20'
+              className='bottom-20 right-20 order-1 sm:absolute'
               src='/images/not-found.avif'
               width={256}
               alt='Пицца не найдена'
             />
 
             <Button
-              className='mx-auto'
+              className='mx-auto mb-10'
               onClick={handleNotFoundPizza}
               size='large'
               variant='outline'

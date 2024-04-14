@@ -17,9 +17,11 @@ export default function ErrorPage() {
   console.error(error.data);
 
   return (
-    <section className='flex h-screen items-center justify-center text-white'>
+    <section className='container flex min-h-dvh items-center justify-center text-center text-white'>
       <div>
-        <h1 className='mb-8 text-3xl font-bold'>Ой! Что-то пошло не так!</h1>
+        <h1 className='mb-8 text-3xl font-bold'>
+          Ооой! <br /> Что-то пошло не&nbsp;так!
+        </h1>
         <img
           className='mx-auto mb-12 block'
           src='/images/error-page.avif'

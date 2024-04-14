@@ -10,7 +10,7 @@ interface Props {
 
 export default function PizzaList({ items }: Props) {
   return (
-    <ul className='mb-12 flex flex-col place-items-center xl:grid-cols-4'>
+    <ul className='mb-12 place-items-center space-y-10 xl:grid-cols-4'>
       <AnimatePresence mode={'wait'}>
         {items.map((item) => (
           <PizzaCard key={item.id} {...item} />

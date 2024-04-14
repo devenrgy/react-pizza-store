@@ -84,7 +84,7 @@ export default function PizzaCard({
         duration: 0.3,
         ease: 'easeInOut',
       }}
-      className='row-span-4 grid w-[280px] grid-rows-subgrid gap-0'
+      className='row-span-4 mx-auto grid w-[280px] grid-rows-subgrid gap-0'
     >
       <img
         className='clip-circle mx-auto mb-2 block aspect-square'
@@ -98,7 +98,7 @@ export default function PizzaCard({
         {title}
       </h2>
 
-      <ul className='mb-5 flex flex-col gap-2 rounded-xl bg-neutral-800 p-2'>
+      <ul className='mb-5 space-y-3 rounded-xl bg-neutral-800 p-2'>
         <li className='flex'>
           {PIZZA_DOUGH.map((dough, i) => (
             <button
