@@ -1,15 +1,18 @@
+import Button from 'components/button';
+
 import { CATEGORIES } from 'consts';
 
 import cn from 'lib/utils.ts';
-
-import styles from './navbar.module.scss';
 
 interface Props {
   currentCategory: string;
   setQueryParams: (key: string, param: string) => void;
 }
 
-export default function Navbar({ currentCategory = '', setQueryParams }: Props) {
+export default function Navbar({
+  currentCategory = '',
+  setQueryParams,
+}: Props) {
   const handleCurrentCategory = (path: string) => {
     setQueryParams('page', '1');
     setQueryParams('category', path);
@@ -18,15 +21,17 @@ export default function Navbar({ currentCategory = '', setQueryParams }: Props) 
 
   return (
     <nav>
-      <ul className={styles.list}>
+      <ul className='flex gap-2'>
         {CATEGORIES.map(({ name, path }, i) => (
           <li key={i}>
-            <button
+            <Button
               onClick={() => handleCurrentCategory(path)}
-              className={cn(styles.button, currentCategory === path && styles.active)}
+              variant={currentCategory === path ? 'primary' : 'accent'}
+              size='large'
+              className={cn(currentCategory === path && 'pointer-events-none')}
             >
               {name}
-            </button>
+            </Button>
           </li>
         ))}
       </ul>

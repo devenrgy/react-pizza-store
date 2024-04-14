@@ -1,8 +1,10 @@
-import { isRouteErrorResponse, useNavigate, useRouteError } from 'react-router-dom';
+import {
+  isRouteErrorResponse,
+  useNavigate,
+  useRouteError,
+} from 'react-router-dom';
 
-import { Button } from 'components/button';
-
-import styles from './error-page.module.scss';
+import Button from 'components/button';
 
 export default function ErrorPage() {
   const navigate = useNavigate();
@@ -15,11 +17,21 @@ export default function ErrorPage() {
   console.error(error.data);
 
   return (
-    <section className={styles.errorPage}>
+    <section className='flex h-screen items-center justify-center text-white'>
       <div>
-        <h1 className={styles.title}>Ой! Что-то пошло не так!</h1>
-        <img src='/images/error-page.avif' width={256} alt='Стикер с удивленной пиццей' />
-        <Button variant='accent' size='large' onClick={() => navigate('/')}>
+        <h1 className='mb-8 text-3xl font-bold'>Ой! Что-то пошло не так!</h1>
+        <img
+          className='mx-auto mb-12 block'
+          src='/images/error-page.avif'
+          width={256}
+          alt='Стикер с удивленной пиццей'
+        />
+        <Button
+          className='mx-auto'
+          variant='accent'
+          size='large'
+          onClick={() => navigate('/')}
+        >
           На главную
         </Button>
       </div>

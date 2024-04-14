@@ -10,7 +10,7 @@ import {
   useUpdatePizzaItemMutation,
 } from 'store/services/pizzaApi';
 
-import { Button } from 'components/button';
+import Button from 'components/button';
 
 import { PIZZA_DOUGH, PIZZA_SIZES } from 'consts';
 
@@ -18,11 +18,16 @@ import cn from 'lib/utils.ts';
 
 import { PizzaItem } from 'types';
 
-import styles from './pizza-card.module.scss';
-
 interface Props extends PizzaItem {}
 
-export default function PizzaCard({ title, imageUrl, types, sizes, price, id }: Props) {
+export default function PizzaCard({
+  title,
+  imageUrl,
+  types,
+  sizes,
+  price,
+  id,
+}: Props) {
   const { data: cartItems } = useGetCartPizzaItemsQuery();
   const [updateCartPizzaItem] = useUpdatePizzaItemMutation();
   const [addCartPizzaItem] = useAddPizzaItemMutation();
@@ -30,9 +35,13 @@ export default function PizzaCard({ title, imageUrl, types, sizes, price, id }: 
   const [activeSize, setActiveSize] = useState(0);
 
   const identicalProducts = cartItems?.filter((item) => item.pizzaID === id);
-  const identicalProductsQuantity = identicalProducts?.reduce((acc, item) => acc + item.quantity, 0) ?? 0;
+  const identicalProductsQuantity =
+    identicalProducts?.reduce((acc, item) => acc + item.quantity, 0) ?? 0;
   const currentItem = cartItems?.find(
-    (item) => item.pizzaID === id && item.type === PIZZA_DOUGH[activeType] && item.size === PIZZA_SIZES[activeSize]
+    (item) =>
+      item.pizzaID === id &&
+      item.type === PIZZA_DOUGH[activeType] &&
+      item.size === PIZZA_SIZES[activeSize]
   );
   const currentItemQuantity = currentItem?.quantity ?? 0;
   const [quantityAll, setQuantityAll] = useState(0);
@@ -71,22 +80,33 @@ export default function PizzaCard({ title, imageUrl, types, sizes, price, id }: 
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      whileHover={{ scale: 1.02 }}
       transition={{
         duration: 0.3,
         ease: 'easeInOut',
       }}
-      className={styles.pizzaCard}
+      className='row-span-4 grid w-[280px] grid-rows-subgrid gap-0'
     >
-      <img src={imageUrl} width={260} height={260} alt={`Пицца ${title}`} />
+      <img
+        className='clip-circle mb-2 block aspect-square'
+        src={imageUrl}
+        width={260}
+        height={260}
+        alt={`Пицца ${title}`}
+      />
 
-      <h2>{title}</h2>
+      <h2 className='mb-5 break-words text-center text-xl font-extrabold'>
+        {title}
+      </h2>
 
-      <ul className={styles.controls}>
-        <li>
+      <ul className='mb-5 flex flex-col gap-2 rounded-xl bg-neutral-800 p-2'>
+        <li className='flex'>
           {PIZZA_DOUGH.map((dough, i) => (
             <button
-              className={cn(types[activeType] === i && styles.active)}
+              className={cn(
+                'flex-1 rounded px-5 py-3 text-sm font-bold duration-300 hover:bg-black/30 disabled:pointer-events-none disabled:opacity-30',
+                types[activeType] === i &&
+                  'pointer-events-none bg-neutral-950 shadow'
+              )}
               key={i}
               disabled={!types.includes(i)}
               onClick={() => setActiveType(i)}
@@ -96,10 +116,14 @@ export default function PizzaCard({ title, imageUrl, types, sizes, price, id }: 
           ))}
         </li>
 
-        <li>
+        <li className='flex'>
           {PIZZA_SIZES.map((size, i) => (
             <button
-              className={cn(sizes[activeSize] === size && styles.active)}
+              className={cn(
+                'flex-1 rounded px-5 py-3 text-sm font-bold duration-300 hover:bg-black/30 disabled:pointer-events-none disabled:opacity-30',
+                sizes[activeSize] === size &&
+                  'pointer-events-none bg-neutral-950 shadow'
+              )}
               key={i}
               disabled={!sizes.includes(size)}
               onClick={() => setActiveSize(sizes.indexOf(size))}
@@ -110,10 +134,15 @@ export default function PizzaCard({ title, imageUrl, types, sizes, price, id }: 
         </li>
       </ul>
 
-      <div className={styles.addTo}>
-        <p className={styles.price}>от {price} ₽</p>
+      <div className='flex items-center justify-between'>
+        <p className='text-xl font-bold'>от {price} &#8381;</p>
 
-        <Button icon={<FaPlus />} onClick={handleAddToCart} variant={'outline'} counter={quantityAll}>
+        <Button
+          icon={<FaPlus />}
+          onClick={handleAddToCart}
+          variant={'outline'}
+          counter={quantityAll}
+        >
           Добавить
         </Button>
       </div>

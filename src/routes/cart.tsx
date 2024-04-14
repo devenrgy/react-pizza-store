@@ -13,17 +13,18 @@ import {
   useUpdatePizzaItemMutation,
 } from 'store/services/pizzaApi';
 
-import { Button } from 'components/button';
-import { CartItem } from 'components/cart-item';
-
-import styles from './cart.module.scss';
+import Button from 'components/button';
+import CartItem from 'components/cart-item';
 
 export default function Cart() {
   const { data, isLoading } = useGetCartPizzaItemsQuery();
   const [updateCartPizzaItem] = useUpdatePizzaItemMutation();
   const [deletePizzaItem] = useDeletePizzaItemMutation();
   const [deleteAllPizzaItems] = useDeleteAllPizzaItemsMutation();
-  const totalPrice = data?.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const totalPrice = data?.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
   const totalPizzas = data?.reduce((acc, item) => acc + item.quantity, 0);
 
   const handleIncrementPizzaItem = (id: number, quantity: number) => {
@@ -43,34 +44,35 @@ export default function Cart() {
   };
 
   return (
-    <section className={styles.cart}>
+    <section className='mt-24 text-lg'>
       {isLoading ? (
-        <div className={styles.loader}>
+        <div className='mt-24 flex justify-center'>
           <ThreeDots
             visible={true}
             height='80'
             width='80'
-            color='#dc2f02'
+            color='#7f1d1d'
             radius='9'
             ariaLabel='three-dots-loading'
-            wrapperStyle={{}}
-            wrapperClass={styles.loader}
           />
         </div>
       ) : data?.length ? (
-        <div className={styles.content}>
-          <div className={styles.header}>
-            <div>
+        <div className='mx-auto mt-24 max-w-[830px]'>
+          <div className='flex items-center justify-between border-b border-neutral-800 pb-8'>
+            <div className='flex items-center gap-5'>
               <RiShoppingCartLine size={30} />
-              <h1 className={styles.title}>Корзина</h1>
+              <h1 className='m-0 text-3xl font-bold'>Корзина</h1>
             </div>
-            <button onClick={handleRemoveAllPizzaItems}>
+            <button
+              className='flex gap-3 text-base text-neutral-400 duration-300 hover:text-neutral-300'
+              onClick={handleRemoveAllPizzaItems}
+            >
               <FaTrashCan size={20} />
               Очистить корзину
             </button>
           </div>
 
-          <ul className={styles.list}>
+          <ul className='scrollbar-thumb-red-900 scrollbar-track-transparent scrollbar-thin scrollbar- mb-10 grid max-h-[600px] min-h-[300px] content-start gap-7 overflow-y-scroll'>
             <AnimatePresence mode='popLayout'>
               {data.map((item) => (
                 <CartItem
@@ -84,16 +86,17 @@ export default function Cart() {
             </AnimatePresence>
           </ul>
 
-          <div className={styles.info}>
+          <div className='mb-10 flex justify-between text-2xl'>
             <p>
-              Всего пицц: <span>{totalPizzas} шт.</span>
+              Всего пицц: <span className='font-bold'>{totalPizzas} шт.</span>
             </p>
             <p>
-              Сумма заказа: <span>{totalPrice} ₽</span>
+              Сумма заказа:{' '}
+              <span className='font-bold text-red-900'>{totalPrice} ₽</span>
             </p>
           </div>
 
-          <div className={styles.controls}>
+          <div className='flex justify-between'>
             <Link to={'/'}>
               <Button size={'large'} variant={'outline'}>
                 <LuArrowLeft size={20} />
@@ -106,12 +109,19 @@ export default function Cart() {
           </div>
         </div>
       ) : (
-        <div className={styles.emptyCart}>
-          <h1 className={styles.title}>Корзина пустая</h1>
-          <p>Подумайте, какое волшебство вы можете сюда положить...</p>
-          <img src='/images/empty-cart.avif' width={256} alt='Корзина пустая' />
+        <div className='text-center'>
+          <h1 className='mb-5 text-3xl font-bold'>Корзина пустая</h1>
+          <p className='mb-12 leading-normal'>
+            Подумайте, какое волшебство вы можете сюда положить...
+          </p>
+          <img
+            className='absolute bottom-20 right-20'
+            src='/images/empty-cart.avif'
+            width={256}
+            alt='Корзина пустая'
+          />
           <Link to={'/'}>
-            <Button size='large' variant='outline'>
+            <Button className='mx-auto' size='large' variant='outline'>
               Назад
             </Button>
           </Link>
