@@ -44,7 +44,7 @@ export default function Header() {
           <Search />
           <Link
             to='/cart'
-            className='flex min-w-[150px] items-center justify-center gap-4 rounded-full bg-red-900 px-6 py-4 font-bold duration-300 hover:bg-red-800 sm:ml-auto'
+            className='flex min-w-[150px] items-center justify-center gap-4 rounded-full bg-red-900 px-6 py-4 font-bold duration-300 active:bg-red-800 sm:ml-auto lg:hover:bg-red-800'
           >
             {cartQuantity ? (
               <>

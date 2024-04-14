@@ -23,11 +23,11 @@ export default function Pagination({ currentPage, totalPages }: Props) {
   return (
     <ReactPaginate
       className='flex select-none items-center justify-center gap-5'
-      pageLinkClassName='duration-300 rounded-full aspect-square h-10 flex items-center justify-center bg-neutral-800 hover:scale-110 hover:bg-neutral-700'
-      activeLinkClassName='focus:scale-125 scale-125 bg-red-900 focus:bg-red-900 pointer-events-none'
-      previousLinkClassName='duration-300 rounded-full aspect-square h-10 flex justify-center items-center opacity-100 hover:bg-neutral-700'
-      nextLinkClassName='duration-300 rounded-full aspect-square h-10 flex justify-center items-center opacity-100 hover:bg-neutral-700'
-      breakLinkClassName='duration-300 rounded-full aspect-square h-10 flex items-center justify-center bg-neutral-800 hover:scale-110 hover:bg-neutral-700'
+      pageLinkClassName='duration-300 rounded-full aspect-square h-10 flex items-center justify-center bg-neutral-800 lg:hover:scale-110 lg:hover:bg-neutral-700 active:scale-110 active:bg-neutral-700'
+      activeLinkClassName='scale-125 bg-red-900 pointer-events-none'
+      previousLinkClassName='duration-300 rounded-full aspect-square h-10 flex justify-center items-center opacity-100 active:bg-neutral-700 lg:hover:bg-neutral-700'
+      nextLinkClassName='duration-300 rounded-full aspect-square h-10 flex justify-center items-center opacity-100 active:bg-neutral-700 lg:hover:bg-neutral-700'
+      breakLinkClassName='duration-300 rounded-full aspect-square h-10 flex items-center justify-center bg-neutral-800 active:bg-neutral-700 lg:hover:bg-neutral-700'
       disabledClassName='opacity-30 pointer-events-none'
       breakLabel='...'
       nextLabel={<IoMdArrowRoundForward size={30} />}

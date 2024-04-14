@@ -64,7 +64,7 @@ export default function Cart() {
               <h1 className='m-0 text-3xl font-bold'>Корзина</h1>
             </div>
             <button
-              className='flex gap-3 p-3 text-base text-neutral-400 duration-300 hover:text-neutral-300'
+              className='flex gap-3 p-3 text-base text-neutral-400 duration-300 active:text-neutral-300 lg:hover:text-neutral-300'
               onClick={handleRemoveAllPizzaItems}
             >
               <FaTrashCan size={20} />

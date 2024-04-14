@@ -55,7 +55,7 @@ export default function CartItem({
         <div className='flex items-center gap-3'>
           <button
             className={cn(
-              'visible flex aspect-square h-8 items-center justify-center rounded-full border-2 border-red-900 text-red-900 duration-300 hover:bg-red-900 hover:text-white',
+              'visible flex aspect-square h-8 items-center justify-center rounded-full border-2 border-red-900 text-red-900 duration-300 active:bg-red-900 active:text-white lg:hover:bg-red-900 lg:hover:text-white',
               {
                 'pointer-events-none invisible opacity-0': quantity < 2,
               }
@@ -67,7 +67,7 @@ export default function CartItem({
           {quantity} шт.
           <button
             className={cn(
-              'visible flex aspect-square h-8 items-center justify-center rounded-full border-2 border-red-900 text-red-900 duration-300 hover:bg-red-900 hover:text-white',
+              'visible flex aspect-square h-8 items-center justify-center rounded-full border-2 border-red-900 text-red-900 duration-300 active:bg-red-900 active:text-white lg:hover:bg-red-900 lg:hover:text-white',
               {
                 'pointer-events-none invisible opacity-0': quantity > 4,
               }
@@ -79,7 +79,7 @@ export default function CartItem({
         </div>
         <p>{price * quantity} ₽</p>
         <button
-          className='flex aspect-square h-8 items-center justify-center rounded-full border-2 border-red-900 text-red-900 duration-300 hover:bg-red-900 hover:text-white'
+          className='flex aspect-square h-8 items-center justify-center rounded-full border-2 border-red-900 text-red-900 duration-300 active:bg-red-900 active:text-white lg:hover:bg-red-900 lg:hover:text-white'
           onClick={() => removePizzaItem(id!)}
         >
           <IoClose size={20} />

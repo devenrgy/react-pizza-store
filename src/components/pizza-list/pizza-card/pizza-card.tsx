@@ -103,9 +103,9 @@ export default function PizzaCard({
           {PIZZA_DOUGH.map((dough, i) => (
             <button
               className={cn(
-                'flex-1 rounded px-5 py-3 text-sm font-bold duration-300 hover:bg-black/30 disabled:pointer-events-none disabled:opacity-30',
+                'flex-1 rounded px-5 py-3 text-sm font-bold duration-300 active:bg-black/30 disabled:pointer-events-none disabled:opacity-30 lg:hover:bg-black/30',
                 {
-                  'pointer-events-none bg-neutral-950 shadow focus:bg-neutral-950':
+                  'pointer-events-none bg-neutral-950 shadow':
                     types[activeType] == i,
                 }
               )}
@@ -122,9 +122,9 @@ export default function PizzaCard({
           {PIZZA_SIZES.map((size, i) => (
             <button
               className={cn(
-                'flex-1 rounded px-5 py-3 text-sm font-bold duration-300 hover:bg-black/30 disabled:pointer-events-none disabled:opacity-30',
+                'flex-1 rounded px-5 py-3 text-sm font-bold duration-300 active:bg-black/30 disabled:pointer-events-none disabled:opacity-30 lg:hover:bg-black/30',
                 {
-                  'pointer-events-none bg-neutral-950 shadow focus:bg-neutral-950':
+                  'pointer-events-none bg-neutral-950 shadow':
                     sizes[activeSize] == size,
                 }
               )}

@@ -27,9 +27,9 @@ export default function Button({
     },
     variant: {
       outline:
-        'border-2 border-red-900 text-red-900 hover:text-white hover:bg-red-900',
-      primary: 'bg-red-900 hover:bg-red-800',
-      accent: 'bg-neutral-800 hover:bg-neutral-700',
+        'border-2 border-red-900 text-red-900 lg:hover:text-white lg:hover:bg-red-900 active:bg-red-900 active:text-white',
+      primary: 'bg-red-900 lg:hover:bg-red-800 active:bg-red-800',
+      accent: 'bg-neutral-800 lg:hover:bg-neutral-700 active:bg-neutral-700',
     },
   };
   return (
@@ -47,7 +47,7 @@ export default function Button({
       {!!counter && (
         <div
           className={cn(
-            'flex aspect-square min-h-3 items-center justify-center rounded-full bg-red-900 p-2 text-xs font-bold text-white duration-300 group-hover:bg-white group-hover:text-red-800'
+            'flex aspect-square min-h-3 items-center justify-center rounded-full bg-red-900 p-2 text-xs font-bold text-white duration-300 group-active:bg-white group-active:text-red-800 lg:group-hover:bg-white lg:group-hover:text-red-800'
           )}
         >
           {counter}
