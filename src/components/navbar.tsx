@@ -21,14 +21,17 @@ export default function Navbar({
 
   return (
     <nav>
-      <ul className='flex gap-2'>
+      <ul className='flex flex-wrap gap-5 sm:flex sm:flex-wrap sm:gap-2'>
         {CATEGORIES.map(({ name, path }, i) => (
-          <li key={i}>
+          <li className='flex-1 [&:nth-child(3)]:w-full' key={i}>
             <Button
               onClick={() => handleCurrentCategory(path)}
-              variant={currentCategory === path ? 'primary' : 'accent'}
+              variant={currentCategory == path ? 'primary' : 'accent'}
               size='large'
-              className={cn(currentCategory === path && 'pointer-events-none')}
+              className={cn(
+                { 'pointer-events-none': currentCategory == path },
+                'w-full min-w-max'
+              )}
             >
               {name}
             </Button>

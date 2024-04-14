@@ -49,7 +49,9 @@ export default function CartItem({
         <button
           className={cn(
             'visible flex aspect-square h-8 items-center justify-center rounded-full border-2 border-red-900 text-red-900 duration-300 hover:bg-red-900 hover:text-white',
-            quantity < 2 && 'pointer-events-none invisible opacity-0'
+            {
+              'pointer-events-none invisible opacity-0': quantity < 2,
+            }
           )}
           onClick={() => decrementPizzaItem(id!, quantity)}
         >
@@ -59,7 +61,9 @@ export default function CartItem({
         <button
           className={cn(
             'visible flex aspect-square h-8 items-center justify-center rounded-full border-2 border-red-900 text-red-900 duration-300 hover:bg-red-900 hover:text-white',
-            quantity > 4 && 'pointer-events-none invisible opacity-0'
+            {
+              'pointer-events-none invisible opacity-0': quantity > 4,
+            }
           )}
           onClick={() => incrementPizzaItem(id!, quantity)}
         >
@@ -68,9 +72,7 @@ export default function CartItem({
       </div>
       <p>{price} ₽</p>
       <button
-        className={cn(
-          'flex aspect-square h-8 items-center justify-center rounded-full border-2 border-red-900 text-red-900 duration-300 hover:bg-red-900 hover:text-white'
-        )}
+        className='flex aspect-square h-8 items-center justify-center rounded-full border-2 border-red-900 text-red-900 duration-300 hover:bg-red-900 hover:text-white'
         onClick={() => removePizzaItem(id!)}
       >
         <IoClose size={20} />

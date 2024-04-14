@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 
 import { PizzaCard } from 'components/pizza-list/pizza-card';
 
@@ -10,12 +10,12 @@ interface Props {
 
 export default function PizzaList({ items }: Props) {
   return (
-    <motion.ul className='grid place-items-center grid-cols-4 mb-12' layout layoutRoot>
+    <ul className='mb-12 flex flex-col place-items-center xl:grid-cols-4'>
       <AnimatePresence mode={'wait'}>
         {items.map((item) => (
           <PizzaCard key={item.id} {...item} />
         ))}
       </AnimatePresence>
-    </motion.ul>
+    </ul>
   );
 }

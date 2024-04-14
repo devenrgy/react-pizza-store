@@ -34,14 +34,14 @@ export default function PizzaCard({
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
 
-  const identicalProducts = cartItems?.filter((item) => item.pizzaID === id);
+  const identicalProducts = cartItems?.filter((item) => item.pizzaID == id);
   const identicalProductsQuantity =
     identicalProducts?.reduce((acc, item) => acc + item.quantity, 0) ?? 0;
   const currentItem = cartItems?.find(
     (item) =>
-      item.pizzaID === id &&
-      item.type === PIZZA_DOUGH[activeType] &&
-      item.size === PIZZA_SIZES[activeSize]
+      item.pizzaID == id &&
+      item.type == PIZZA_DOUGH[activeType] &&
+      item.size == PIZZA_SIZES[activeSize]
   );
   const currentItemQuantity = currentItem?.quantity ?? 0;
   const [quantityAll, setQuantityAll] = useState(0);
@@ -87,7 +87,7 @@ export default function PizzaCard({
       className='row-span-4 grid w-[280px] grid-rows-subgrid gap-0'
     >
       <img
-        className='clip-circle mb-2 block aspect-square'
+        className='clip-circle mx-auto mb-2 block aspect-square'
         src={imageUrl}
         width={260}
         height={260}
@@ -104,8 +104,10 @@ export default function PizzaCard({
             <button
               className={cn(
                 'flex-1 rounded px-5 py-3 text-sm font-bold duration-300 hover:bg-black/30 disabled:pointer-events-none disabled:opacity-30',
-                types[activeType] === i &&
-                  'pointer-events-none bg-neutral-950 shadow'
+                {
+                  'pointer-events-none bg-neutral-950 shadow':
+                    types[activeType] == i,
+                }
               )}
               key={i}
               disabled={!types.includes(i)}
@@ -121,8 +123,10 @@ export default function PizzaCard({
             <button
               className={cn(
                 'flex-1 rounded px-5 py-3 text-sm font-bold duration-300 hover:bg-black/30 disabled:pointer-events-none disabled:opacity-30',
-                sizes[activeSize] === size &&
-                  'pointer-events-none bg-neutral-950 shadow'
+                {
+                  'pointer-events-none bg-neutral-950 shadow':
+                    sizes[activeSize] == size,
+                }
               )}
               key={i}
               disabled={!sizes.includes(size)}

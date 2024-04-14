@@ -8,7 +8,7 @@ import { Search } from 'components/header/search';
 export default function Header() {
   const { data: cartItems } = useGetCartPizzaItemsQuery();
   const { pathname } = useLocation();
-  const isCartPage = pathname === '/cart';
+  const isCartPage = pathname == '/cart';
 
   const totalAmount = cartItems?.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -17,8 +17,8 @@ export default function Header() {
   const cartQuantity = cartItems?.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <header className='mb-10 flex items-center gap-20 border-b border-neutral-800 pb-10'>
-      <Link className='flex gap-5' to='/'>
+    <header className='mb-10 flex flex-col flex-wrap items-center gap-10 border-b border-neutral-800 pb-10 sm:gap-20'>
+      <Link className='flex flex-col items-center gap-5 text-center' to='/'>
         <img
           src='/icons/logo.svg'
           alt='Логотип Pizza Store'
@@ -37,7 +37,7 @@ export default function Header() {
           <Search />
           <Link
             to='/cart'
-            className='ml-auto flex min-w-[150px] items-center justify-center gap-4 rounded-full bg-red-900 px-6 py-4 font-bold duration-300 hover:bg-red-800'
+            className='flex min-w-[150px] items-center justify-center gap-4 rounded-full bg-red-900 px-6 py-4 font-bold duration-300 hover:bg-red-800 sm:ml-auto'
           >
             {cartQuantity ? (
               <>

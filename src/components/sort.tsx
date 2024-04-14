@@ -57,7 +57,7 @@ export default function Sort({
                 title={name}
                 className={cn(
                   'w-full px-5 py-3 text-left text-sm duration-300 hover:bg-red-900/40',
-                  currentSort === value && 'pointer-events-none bg-red-900/60'
+                  { 'pointer-events-none bg-red-900/60': currentSort == value }
                 )}
               >
                 {name}

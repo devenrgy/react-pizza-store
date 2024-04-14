@@ -25,12 +25,12 @@ export default function Search() {
   };
 
   return (
-    <search className='group relative w-[400px] duration-300'>
+    <search className='group relative max-w-[400px] duration-300'>
       <form autoComplete='off' onSubmit={handleSubmit(handleSubmitForm)}>
         <label className='peer'>
           <input
             {...register('search')}
-            className='relative z-10 h-14 w-full rounded-full border-2 border-neutral-800 bg-neutral-950 pl-5 pr-10 text-lg placeholder-neutral-500 outline-none duration-300 focus:border-red-900 [&:not(:placeholder-shown)]:w-[calc(100%_-_64px)] [&:not(:placeholder-shown)]:rounded-r-none'
+            className='relative z-10 h-14 w-full appearance-none rounded-full border-2 border-neutral-800 bg-neutral-950 pl-5 pr-10 text-lg placeholder-neutral-500 outline-none duration-300 focus:border-red-900 [&:not(:placeholder-shown)]:w-[calc(100%_-_64px)] [&:not(:placeholder-shown)]:rounded-r-none'
             defaultValue={q}
             type='search'
             placeholder='Поиск пиццы...'

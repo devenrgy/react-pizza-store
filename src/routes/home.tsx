@@ -16,7 +16,7 @@ export default function Home() {
   const [currentParams, setQueryParams] = useQueryParams();
   const { category, sort, page, q } = currentParams;
   const currentCategory =
-    CATEGORIES.find((item) => item.path === category)?.name ?? 'Все';
+    CATEGORIES.find((item) => item.path == category)?.name ?? 'Все';
   const { data, isLoading } = useGetPizzaItemsQuery({
     category,
     sort: sort ?? 'rating',
@@ -30,12 +30,12 @@ export default function Home() {
 
   return (
     <div>
-      <div className='mb-7 flex items-center justify-between'>
+      <div className='mb-7 flex flex-wrap items-center justify-between'>
         <Navbar currentCategory={category} setQueryParams={setQueryParams} />
         <Sort currentSort={sort} setQueryParams={setQueryParams} />
       </div>
 
-      <section className='grid min-h-[650px] grid-rows-[1fr_min-content] has-[.notFound]:min-h-[auto] has-[.notFound]:grid-rows-[1fr]'>
+      <section className='has-[.notFound]:min-h-[auto] has-[.notFound]:grid-rows-[1fr]'>
         {isLoading ? (
           <div className='mt-32 flex justify-center'>
             <ThreeDots
@@ -49,7 +49,7 @@ export default function Home() {
           </div>
         ) : data?.items.length ? (
           <div>
-            <h1 className='text-3xl font-bold mb-8'>{currentCategory} пиццы</h1>
+            <h1 className='mb-8 text-3xl font-bold'>{currentCategory} пиццы</h1>
             <PizzaList items={data.items} />
           </div>
         ) : (

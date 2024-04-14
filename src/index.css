@@ -2,7 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  color-scheme: dark;
+}
+
 @layer base {
+  input[type='search']::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
   /* nunito-regular - cyrillic_latin */
   @font-face {
     font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
