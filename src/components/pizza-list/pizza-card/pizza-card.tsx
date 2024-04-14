@@ -105,7 +105,7 @@ export default function PizzaCard({
               className={cn(
                 'flex-1 rounded px-5 py-3 text-sm font-bold duration-300 hover:bg-black/30 disabled:pointer-events-none disabled:opacity-30',
                 {
-                  'pointer-events-none bg-neutral-950 shadow':
+                  'pointer-events-none bg-neutral-950 shadow focus:bg-neutral-950':
                     types[activeType] == i,
                 }
               )}
@@ -124,7 +124,7 @@ export default function PizzaCard({
               className={cn(
                 'flex-1 rounded px-5 py-3 text-sm font-bold duration-300 hover:bg-black/30 disabled:pointer-events-none disabled:opacity-30',
                 {
-                  'pointer-events-none bg-neutral-950 shadow':
+                  'pointer-events-none bg-neutral-950 shadow focus:bg-neutral-950':
                     sizes[activeSize] == size,
                 }
               )}
