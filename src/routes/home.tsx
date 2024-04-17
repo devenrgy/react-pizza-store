@@ -65,7 +65,7 @@ export default function Home() {
           <div className='notFound mt-12 flex w-full flex-col items-center justify-self-center text-center sm:mt-24'>
             <h1 className='mb-5 text-balance text-3xl font-bold'>
               {q
-                ? `Не удалось найти «${q?.toLocaleLowerCase()}» пиццу...`
+                ? `Не удалось найти «${q?.toLocaleLowerCase()}»`
                 : 'Не удалось загрузить данные...'}
             </h1>
 

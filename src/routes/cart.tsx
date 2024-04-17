@@ -44,9 +44,9 @@ export default function Cart() {
   };
 
   return (
-    <section className='flex pb-[310px] pt-24 text-lg md:py-10'>
+    <section className='flex py-20 text-lg md:py-10'>
       {isLoading ? (
-        <div className='mt-24 flex justify-center'>
+        <div className='mx-auto mt-24 flex justify-center'>
           <ThreeDots
             visible={true}
             height='80'
