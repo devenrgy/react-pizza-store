@@ -44,7 +44,7 @@ export default function Cart() {
   };
 
   return (
-    <section className='flex py-20 text-lg md:py-10'>
+    <section className='flex pb-[350px] pt-20 text-lg md:py-10'>
       {isLoading ? (
         <div className='mx-auto mt-24 flex justify-center'>
           <ThreeDots
