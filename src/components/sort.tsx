@@ -53,7 +53,7 @@ export default function Sort({
         type='checkbox'
       />
 
-      <div className='invisible absolute top-[115%] z-10 grid grid-rows-[0fr] rounded-xl border border-neutral-800 bg-neutral-950/70 py-1 shadow backdrop-blur-md duration-300 peer-checked:visible peer-checked:grid-rows-[1fr] md:right-0'>
+      <div className='invisible absolute top-[115%] z-10 grid grid-rows-[0fr] rounded-xl border border-neutral-800 bg-neutral-950/70 py-3 shadow backdrop-blur-md duration-300 peer-checked:visible peer-checked:grid-rows-[1fr] md:right-0'>
         <ul className='overflow-hidden'>
           {Object.entries(SORT_LIST).map(([value, name], i) => (
             <li key={i}>
@@ -62,7 +62,9 @@ export default function Sort({
                 title={name}
                 className={cn(
                   'w-full px-5 py-3 text-left text-sm duration-300 hover:bg-red-900/40',
-                  { 'pointer-events-none bg-red-900/60': currentSort == value }
+                  {
+                    'pointer-events-none bg-red-900/60': currentSort == value,
+                  }
                 )}
               >
                 {name}

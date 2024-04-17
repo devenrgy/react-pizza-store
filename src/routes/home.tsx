@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <div>
       {!q && (
-        <div className='mb-7 flex flex-col gap-5'>
+        <div className='mb-7 flex flex-col gap-5 xl:flex-row'>
           <Navbar currentCategory={category} setQueryParams={setQueryParams} />
           <Sort
             className='md:ml-auto'
@@ -62,11 +62,11 @@ export default function Home() {
             <PizzaList items={data.items} />
           </div>
         ) : (
-          <div className='notFound mt-12 flex max-w-[800px] flex-col items-center justify-self-center text-center sm:mt-24'>
-            <h1 className='mb-5 text-3xl font-bold'>
+          <div className='notFound mt-12 flex w-full flex-col items-center justify-self-center text-center sm:mt-24'>
+            <h1 className='mb-5 text-balance text-3xl font-bold'>
               {q
                 ? `Не удалось найти «${q?.toLocaleLowerCase()}» пиццу...`
-                : 'Не&nbsp;удалось загрузить данные...'}
+                : 'Не удалось загрузить данные...'}
             </h1>
 
             {q && (

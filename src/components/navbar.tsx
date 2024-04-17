@@ -21,10 +21,10 @@ export default function Navbar({
 
   return (
     <nav>
-      <ul className='grid grid-cols-2 gap-5 md:grid-cols-3'>
+      <ul className='grid grid-cols-2 gap-5 sm:grid-cols-3 lg:flex lg:flex-wrap'>
         {CATEGORIES.map(({ name, path }, i) => (
           <li
-            className='[&:nth-child(3n+3)]:col-span-2 md:[&:nth-child(3n+3)]:col-span-1'
+            className='[&:nth-child(3n+3)]:col-span-2 sm:[&:nth-child(3n+3)]:col-span-1'
             key={i}
           >
             <Button

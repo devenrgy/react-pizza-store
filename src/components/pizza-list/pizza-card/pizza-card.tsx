@@ -63,7 +63,7 @@ export default function PizzaCard({
         quantity,
       });
     }
-  }, 1000);
+  }, 300);
 
   const handleAddToCart = () => {
     setQuantityAll(quantityAll + 1);

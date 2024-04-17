@@ -3,11 +3,17 @@ import { IoClose, IoSearch } from 'react-icons/io5';
 
 import useQueryParams from 'hooks/useQueryParams.ts';
 
+import cn from 'lib/utils';
+
 type SearchForm = {
   search: string;
 };
 
-export default function Search() {
+interface Props {
+  className: string;
+}
+
+export default function Search({ className }: Props) {
   const [currentParams, setQueryParams] = useQueryParams();
   const { q } = currentParams;
   const { register, handleSubmit, resetField, setFocus } =
@@ -25,7 +31,9 @@ export default function Search() {
   };
 
   return (
-    <search className='group relative w-full max-w-[500px] duration-300'>
+    <search
+      className={cn('group relative max-w-[400px] duration-300', className)}
+    >
       <form autoComplete='off' onSubmit={handleSubmit(handleSubmitForm)}>
         <label className='peer'>
           <input

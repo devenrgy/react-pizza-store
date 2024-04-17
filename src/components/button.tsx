@@ -22,7 +22,7 @@ export default function Button({
   const options = {
     size: {
       small: '',
-      medium: 'min-w-[140px] py-3 px-4',
+      medium: 'py-3 px-4',
       large: 'min-w-[200px] py-4 px-7',
     },
     variant: {

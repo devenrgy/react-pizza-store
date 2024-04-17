@@ -21,11 +21,17 @@ export default function Header() {
   return (
     <header
       className={cn(
-        'mb-10 flex flex-col flex-wrap items-center gap-10 border-b border-neutral-800 pb-10 lg:gap-20',
-        { hidden: isCartPage }
+        'mb-10 flex flex-col flex-wrap items-center gap-10 border-b border-neutral-800 pb-10 lg:flex-row lg:flex-nowrap xl:gap-20',
+        { 'hidden md:flex md:items-start': isCartPage }
       )}
     >
-      <Link className='flex flex-col items-center gap-5 text-center' to='/'>
+      <Link
+        className={cn(
+          'flex flex-col items-center gap-5 text-center lg:flex-row lg:text-left',
+          { 'md:flex-row md:text-left': isCartPage }
+        )}
+        to='/'
+      >
         <img
           src='/icons/logo.svg'
           alt='Логотип Pizza Store'
@@ -41,10 +47,10 @@ export default function Header() {
 
       {!isCartPage && (
         <>
-          <Search />
+          <Search className='w-full flex-grow lg:w-auto' />
           <Link
             to='/cart'
-            className='flex min-w-[150px] items-center justify-center gap-4 rounded-full bg-red-900 px-6 py-4 font-bold duration-300 hover:bg-red-800 '
+            className='flex min-w-[150px] items-center justify-center gap-4 rounded-full bg-red-900 px-6 py-4 font-bold duration-300 hover:bg-red-800 xl:ml-auto '
           >
             {cartQuantity ? (
               <>

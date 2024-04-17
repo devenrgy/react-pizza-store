@@ -44,7 +44,7 @@ export default function Cart() {
   };
 
   return (
-    <section className='flex pb-[310px] text-lg md:pb-0 md:pt-24'>
+    <section className='flex pb-[310px] pt-24 text-lg md:py-10'>
       {isLoading ? (
         <div className='mt-24 flex justify-center'>
           <ThreeDots
@@ -72,7 +72,7 @@ export default function Cart() {
             </button>
           </div>
 
-          <ul className='space-y-10 overflow-y-scroll scrollbar-thin scrollbar-track-transparent scrollbar-thumb-red-900 md:mb-24 md:grid md:max-h-[600px] md:min-h-[300px] md:content-start md:gap-7 md:space-y-0'>
+          <ul className='space-y-10 overflow-y-scroll scrollbar-thin scrollbar-track-transparent scrollbar-thumb-red-900 md:mb-24 md:grid md:max-h-[600px] md:min-h-[300px] md:content-start md:gap-7 md:space-y-0 md:pr-3'>
             <AnimatePresence mode='popLayout'>
               {data.map((item) => (
                 <CartItem
@@ -123,7 +123,7 @@ export default function Cart() {
             </Button>
           </Link>
           <img
-            className='mx-auto'
+            className='bottom-20 right-20 mx-auto lg:absolute'
             src='/images/empty-cart.avif'
             width={256}
             alt='Корзина пустая'
