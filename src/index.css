@@ -40,4 +40,8 @@
   .clip-circle {
     clip-path: circle(125px at center);
   }
+
+  .clip-circle-small {
+    clip-path: circle(39px at center);
+  }
 }

@@ -38,7 +38,7 @@ export default function CartItem({
     >
       <div className='mb-8 space-y-5 md:mb-0 md:flex md:max-w-[500px] md:items-center md:gap-4 md:space-y-0'>
         <img
-          className='mx-auto md:mx-0'
+          className='clip-circle-small mx-auto md:mx-0'
           src={imageUrl}
           width='80'
           height='80'
