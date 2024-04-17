@@ -33,7 +33,7 @@ Explore the deployed version of Pizza Store [here]().
 - **React Router:** Declarative routing for React applications.
 - **TypeScript:** Typed superset of JavaScript that compiles to plain JavaScript.
 - **Vite:** Next Generation Frontend Tooling.
-- **SCSS Modules:** Locally scoped styling for components.
+- **Tailwind:** CSS is a utility-first CSS framework.
 - **Redux Toolkit:** Set of tools for efficient Redux development.
 - **RTK Query:** A library within Redux Toolkit for managing asynchronous API requests in Redux applications.
 
