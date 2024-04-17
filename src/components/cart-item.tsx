@@ -30,13 +30,13 @@ export default function CartItem({
       layout
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: -200, opacity: 0 }}
-      className='mx-auto w-full border-neutral-800 pt-7 text-xl font-bold sm:col-span-4 sm:grid sm:grid-cols-subgrid sm:items-center [&+&]:border-t'
+      className='mx-auto w-full border-neutral-800 pt-7 text-xl font-bold md:col-span-2 md:grid md:grid-cols-subgrid md:items-center [&+&]:border-t'
       transition={{
         duration: 0.3,
         ease: 'easeInOut',
       }}
     >
-      <div className='mb-3 space-y-3 sm:flex sm:max-w-[500px] sm:items-center sm:gap-4'>
+      <div className='mb-8 space-y-5 md:mb-0 md:flex md:max-w-[500px] md:items-center md:gap-4 md:space-y-0'>
         <img
           className='mx-auto'
           src={imageUrl}
@@ -51,11 +51,11 @@ export default function CartItem({
           </p>
         </div>
       </div>
-      <div className='flex items-center justify-between'>
+      <div className='flex items-center justify-between md:gap-5'>
         <div className='flex items-center gap-3'>
           <button
             className={cn(
-              'visible flex aspect-square h-8 items-center justify-center rounded-full border-2 border-red-900 text-red-900 duration-300 active:bg-red-900 active:text-white lg:hover:bg-red-900 lg:hover:text-white',
+              'visible flex aspect-square h-8 items-center justify-center rounded-full border-2 border-red-900 text-red-900 duration-300 hover:bg-red-900 hover:text-white',
               {
                 'pointer-events-none invisible opacity-0': quantity < 2,
               }
@@ -67,7 +67,7 @@ export default function CartItem({
           {quantity} шт.
           <button
             className={cn(
-              'visible flex aspect-square h-8 items-center justify-center rounded-full border-2 border-red-900 text-red-900 duration-300 active:bg-red-900 active:text-white lg:hover:bg-red-900 lg:hover:text-white',
+              'visible flex aspect-square h-8 items-center justify-center rounded-full border-2 border-red-900 text-red-900 duration-300 hover:bg-red-900 hover:text-white',
               {
                 'pointer-events-none invisible opacity-0': quantity > 4,
               }
@@ -79,7 +79,7 @@ export default function CartItem({
         </div>
         <p>{price * quantity} ₽</p>
         <button
-          className='flex aspect-square h-8 items-center justify-center rounded-full border-2 border-red-900 text-red-900 duration-300 active:bg-red-900 active:text-white lg:hover:bg-red-900 lg:hover:text-white'
+          className='flex aspect-square h-8 items-center justify-center rounded-full border-2 border-red-900 text-red-900 duration-300 hover:bg-red-900 hover:text-white'
           onClick={() => removePizzaItem(id!)}
         >
           <IoClose size={20} />

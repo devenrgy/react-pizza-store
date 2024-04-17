@@ -21,16 +21,19 @@ export default function Navbar({
 
   return (
     <nav>
-      <ul className='flex flex-wrap gap-5 sm:flex sm:flex-wrap sm:gap-2'>
+      <ul className='grid grid-cols-2 gap-5 md:grid-cols-3'>
         {CATEGORIES.map(({ name, path }, i) => (
-          <li className='flex-1 [&:nth-child(3)]:w-full' key={i}>
+          <li
+            className='[&:nth-child(3n+3)]:col-span-2 md:[&:nth-child(3n+3)]:col-span-1'
+            key={i}
+          >
             <Button
               onClick={() => handleCurrentCategory(path)}
               variant={currentCategory == path ? 'primary' : 'accent'}
-              size='large'
+              size='medium'
               className={cn(
                 { 'pointer-events-none': currentCategory == path },
-                'w-full min-w-max'
+                'w-full px-7 py-4'
               )}
             >
               {name}

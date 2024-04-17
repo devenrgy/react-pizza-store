@@ -25,7 +25,7 @@ export default function Search() {
   };
 
   return (
-    <search className='group relative max-w-[400px] duration-300'>
+    <search className='group relative w-full max-w-[500px] duration-300'>
       <form autoComplete='off' onSubmit={handleSubmit(handleSubmitForm)}>
         <label className='peer'>
           <input

@@ -21,7 +21,7 @@ export default function Header() {
   return (
     <header
       className={cn(
-        'mb-10 flex flex-col flex-wrap items-center gap-10 border-b border-neutral-800 pb-10 sm:gap-20',
+        'mb-10 flex flex-col flex-wrap items-center gap-10 border-b border-neutral-800 pb-10 lg:gap-20',
         { hidden: isCartPage }
       )}
     >
@@ -35,7 +35,7 @@ export default function Header() {
 
         <div>
           <p className='text-2xl font-extrabold uppercase'>Pizza Store</p>
-          <p className='text-neutral-400'>ваш кусочек пиццы в раю</p>
+          <p className='text-neutral-400'>ваш кусочек пиццы в&nbsp;раю</p>
         </div>
       </Link>
 
@@ -44,7 +44,7 @@ export default function Header() {
           <Search />
           <Link
             to='/cart'
-            className='flex min-w-[150px] items-center justify-center gap-4 rounded-full bg-red-900 px-6 py-4 font-bold duration-300 active:bg-red-800 sm:ml-auto lg:hover:bg-red-800'
+            className='flex min-w-[150px] items-center justify-center gap-4 rounded-full bg-red-900 px-6 py-4 font-bold duration-300 hover:bg-red-800 '
           >
             {cartQuantity ? (
               <>

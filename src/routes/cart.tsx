@@ -44,7 +44,7 @@ export default function Cart() {
   };
 
   return (
-    <section className='text-lg sm:mt-24'>
+    <section className='flex pb-[310px] text-lg md:pb-0 md:pt-24'>
       {isLoading ? (
         <div className='mt-24 flex justify-center'>
           <ThreeDots
@@ -57,22 +57,22 @@ export default function Cart() {
           />
         </div>
       ) : data?.length ? (
-        <div className='mx-auto max-w-[830px]'>
-          <div className=' flex items-center justify-between border-b border-neutral-800 pb-8'>
+        <div className='mx-auto w-full max-w-[830px]'>
+          <div className='flex items-center justify-between border-b border-neutral-800 pb-8'>
             <div className='flex items-center gap-5'>
               <RiShoppingCartLine size={30} />
               <h1 className='m-0 text-3xl font-bold'>Корзина</h1>
             </div>
             <button
-              className='flex gap-3 p-3 text-base text-neutral-400 duration-300 active:text-neutral-300 lg:hover:text-neutral-300'
+              className='flex gap-3 p-3 text-base text-neutral-400 duration-300 hover:text-neutral-300'
               onClick={handleRemoveAllPizzaItems}
             >
               <FaTrashCan size={20} />
-              <span className='hidden'>Очистить корзину</span>
+              <span className='hidden md:block'>Очистить корзину</span>
             </button>
           </div>
 
-          <ul className='space-y-10 overflow-y-scroll pb-[240px] scrollbar-thin scrollbar-track-transparent scrollbar-thumb-red-900 sm:grid sm:max-h-[600px] sm:min-h-[300px] sm:content-start sm:gap-7'>
+          <ul className='space-y-10 overflow-y-scroll scrollbar-thin scrollbar-track-transparent scrollbar-thumb-red-900 md:mb-24 md:grid md:max-h-[600px] md:min-h-[300px] md:content-start md:gap-7 md:space-y-0'>
             <AnimatePresence mode='popLayout'>
               {data.map((item) => (
                 <CartItem
@@ -86,8 +86,8 @@ export default function Cart() {
             </AnimatePresence>
           </ul>
 
-          <div className='fixed bottom-0 left-0 right-0 bg-neutral-900 px-3 py-8'>
-            <div className='mb-10 space-y-4 text-center sm:mb-10 sm:flex sm:justify-between sm:text-2xl'>
+          <div className='fixed bottom-0 left-0 right-0 bg-neutral-900 px-3 py-8 md:static md:bg-inherit md:p-0'>
+            <div className='mb-10 space-y-4 text-center md:mb-10 md:flex md:items-center md:justify-between md:space-y-0 md:text-2xl'>
               <p>
                 Всего пицц: <span className='font-bold'>{totalPizzas} шт.</span>
               </p>
@@ -96,24 +96,26 @@ export default function Cart() {
                 <span className='font-bold text-red-900'>{totalPrice} ₽</span>
               </p>
             </div>
-            <div className='flex justify-between gap-3'>
-              <Link to={'/'}>
-                <Button size={'large'} variant={'outline'}>
+            <div className='flex flex-col items-center gap-5 md:flex-row md:justify-between'>
+              <Link to='/'>
+                <Button size='large' variant='outline'>
                   <LuArrowLeft size={20} />
                   Назад
                 </Button>
               </Link>
-              <Button size={'large'} variant={'primary'}>
-                Оплатить
-              </Button>
+              <Link to='/'>
+                <Button size='large' variant='primary'>
+                  Оплатить
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       ) : (
-        <div className='text-center'>
+        <div className='mx-auto self-center text-center'>
           <h1 className='mb-5 text-3xl font-bold'>Корзина пустая</h1>
-          <p className='mb-12 leading-normal'>
-            Подумайте, какое волшебство вы можете сюда положить...
+          <p className='mb-12 text-balance leading-normal'>
+            Подумайте, какое волшебство вы&nbsp;можете сюда положить...
           </p>
           <Link to={'/'}>
             <Button className='mx-auto mb-10' size='large' variant='outline'>

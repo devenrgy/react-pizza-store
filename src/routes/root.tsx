@@ -16,7 +16,7 @@ export default function Root() {
         </video>
       </div> */}
 
-      <div className='bg-neutral-850 container min-h-dvh py-10 text-white shadow-xl sm:min-h-[calc(100vh_-_60px)] sm:rounded-xl sm:bg-neutral-950/80 sm:px-12 sm:pb-16 sm:pt-7 sm:backdrop-blur-lg'>
+      <div className='container relative min-h-dvh bg-neutral-950 py-10 text-white shadow-xl sm:min-h-[calc(100vh_-_60px)] sm:rounded-xl sm:bg-neutral-950/80 sm:px-12 sm:pb-16 sm:pt-7'>
         <Header />
 
         <main>

@@ -26,7 +26,6 @@ export default function PizzaCard({
   types,
   sizes,
   price,
-  id,
 }: Props) {
   const { data: cartItems } = useGetCartPizzaItemsQuery();
   const [updateCartPizzaItem] = useUpdatePizzaItemMutation();
@@ -34,12 +33,11 @@ export default function PizzaCard({
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
 
-  const identicalProducts = cartItems?.filter((item) => item.pizzaID == id);
+  const identicalProducts = cartItems?.filter((item) => item.title == title);
   const identicalProductsQuantity =
     identicalProducts?.reduce((acc, item) => acc + item.quantity, 0) ?? 0;
-  const currentItem = cartItems?.find(
+  const currentItem = identicalProducts?.find(
     (item) =>
-      item.pizzaID == id &&
       item.type == PIZZA_DOUGH[activeType] &&
       item.size == PIZZA_SIZES[activeSize]
   );
@@ -53,21 +51,19 @@ export default function PizzaCard({
   }, [identicalProductsQuantity, currentItemQuantity]);
 
   const sendRequest = useDebouncedCallback(() => {
-    if (currentItem && currentItemQuantity) {
+    if (currentItem) {
       updateCartPizzaItem({ id: currentItem.id, quantity });
-      return;
+    } else {
+      addCartPizzaItem({
+        imageUrl,
+        title,
+        type: PIZZA_DOUGH[activeType],
+        size: PIZZA_SIZES[activeSize],
+        price,
+        quantity,
+      });
     }
-
-    addCartPizzaItem({
-      imageUrl,
-      pizzaID: id,
-      title,
-      type: PIZZA_DOUGH[activeType],
-      size: PIZZA_SIZES[activeSize],
-      price,
-      quantity: quantity,
-    });
-  }, 300);
+  }, 1000);
 
   const handleAddToCart = () => {
     setQuantityAll(quantityAll + 1);
@@ -103,7 +99,7 @@ export default function PizzaCard({
           {PIZZA_DOUGH.map((dough, i) => (
             <button
               className={cn(
-                'flex-1 rounded px-5 py-3 text-sm font-bold duration-300 active:bg-black/30 disabled:pointer-events-none disabled:opacity-30 lg:hover:bg-black/30',
+                'flex-1 rounded px-5 py-3 text-sm font-bold duration-300 hover:bg-black/30 disabled:pointer-events-none disabled:opacity-30',
                 {
                   'pointer-events-none bg-neutral-950 shadow':
                     types[activeType] == i,
@@ -122,7 +118,7 @@ export default function PizzaCard({
           {PIZZA_SIZES.map((size, i) => (
             <button
               className={cn(
-                'flex-1 rounded px-5 py-3 text-sm font-bold duration-300 active:bg-black/30 disabled:pointer-events-none disabled:opacity-30 lg:hover:bg-black/30',
+                'flex-1 rounded px-5 py-3 text-sm font-bold duration-300 hover:bg-black/30 disabled:pointer-events-none disabled:opacity-30',
                 {
                   'pointer-events-none bg-neutral-950 shadow':
                     sizes[activeSize] == size,

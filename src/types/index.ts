@@ -10,27 +10,26 @@ export type PizzaItem = {
 };
 
 export type CartPizzaItem = {
-  imageUrl: string,
-  id?: number,
-  pizzaID: number,
-  title: string,
-  type: string,
-  size: number,
-  price: number,
-  quantity: number,
-}
+  imageUrl: string;
+  id: number;
+  title: string;
+  type: string;
+  size: number;
+  price: number;
+  quantity: number;
+};
 
 export type PizzaData = {
   meta: Meta;
   items: PizzaItem[];
-}
+};
 
 export type PizzaParams = {
-  category: string,
-  sort: string,
-  q: string,
-  page: string
-}
+  category: string;
+  sort: string;
+  q: string;
+  page: string;
+};
 
 export type Meta = {
   total_items: number;
@@ -38,4 +37,4 @@ export type Meta = {
   current_page: number;
   per_page: number;
   remaining_count: number;
-}
+};

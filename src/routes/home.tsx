@@ -31,9 +31,13 @@ export default function Home() {
   return (
     <div>
       {!q && (
-        <div className='mb-7 flex flex-wrap items-center justify-between gap-5'>
+        <div className='mb-7 flex flex-col gap-5'>
           <Navbar currentCategory={category} setQueryParams={setQueryParams} />
-          <Sort currentSort={sort} setQueryParams={setQueryParams} />
+          <Sort
+            className='md:ml-auto'
+            currentSort={sort}
+            setQueryParams={setQueryParams}
+          />
         </div>
       )}
       <section className='has-[.notFound]:min-h-[auto] has-[.notFound]:grid-rows-[1fr]'>
@@ -52,7 +56,7 @@ export default function Home() {
           <div>
             {!q && (
               <h1 id='top' className='mb-8 text-3xl font-bold'>
-                {currentCategory} пиццы
+                {currentCategory}
               </h1>
             )}
             <PizzaList items={data.items} />
@@ -62,17 +66,17 @@ export default function Home() {
             <h1 className='mb-5 text-3xl font-bold'>
               {q
                 ? `Не удалось найти «${q?.toLocaleLowerCase()}» пиццу...`
-                : 'Не удалось загрузить данные...'}
+                : 'Не&nbsp;удалось загрузить данные...'}
             </h1>
 
             {q && (
-              <p className='mb-12 text-lg'>
+              <p className='mb-12 text-balance text-lg'>
                 Почему&nbsp;бы вам не&nbsp;попробовать поискать что-то другое?
               </p>
             )}
 
             <img
-              className='bottom-20 right-20 order-1 sm:absolute'
+              className='bottom-20 right-20 order-1 lg:absolute'
               src='/images/not-found.avif'
               width={256}
               alt='Пицца не найдена'

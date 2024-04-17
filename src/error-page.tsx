@@ -19,8 +19,8 @@ export default function ErrorPage() {
   return (
     <section className='container flex min-h-dvh items-center justify-center text-center text-white'>
       <div>
-        <h1 className='mb-8 text-3xl font-bold'>
-          Ооой! <br /> Что-то пошло не&nbsp;так!
+        <h1 className='mb-8 text-balance text-3xl font-bold'>
+          Упс! Что-то пошло не&nbsp;так!
         </h1>
         <img
           className='mx-auto mb-12 block'
@@ -34,7 +34,7 @@ export default function ErrorPage() {
           size='large'
           onClick={() => navigate('/')}
         >
-          На главную
+          На&nbsp;главную
         </Button>
       </div>
     </section>

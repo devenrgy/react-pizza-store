@@ -19,7 +19,13 @@ export const pizzaApi = createApi({
 
       providesTags: (result) =>
         result
-          ? [...result.items.map(({ id }) => ({ type: 'PizzaItems' as const, id })), { type: 'PizzaItems', id: 'LIST' }]
+          ? [
+              ...result.items.map(({ id }) => ({
+                type: 'PizzaItems' as const,
+                id,
+              })),
+              { type: 'PizzaItems', id: 'LIST' },
+            ]
           : [{ type: 'PizzaItems', id: 'LIST' }],
     }),
     getCartPizzaItems: build.query<CartPizzaItem[], void>({
@@ -27,12 +33,15 @@ export const pizzaApi = createApi({
       providesTags: (result) =>
         result
           ? [
-              ...result.map(({ id }) => ({ type: 'CartPizzaItems' as const, id })),
+              ...result.map(({ id }) => ({
+                type: 'CartPizzaItems' as const,
+                id,
+              })),
               { type: 'CartPizzaItems', id: 'LIST' },
             ]
           : [{ type: 'CartPizzaItems', id: 'LIST' }],
     }),
-    addPizzaItem: build.mutation<CartPizzaItem, CartPizzaItem>({
+    addPizzaItem: build.mutation<CartPizzaItem, Partial<CartPizzaItem>>({
       query(body) {
         return {
           url: `cart`,
