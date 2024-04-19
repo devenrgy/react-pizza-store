@@ -25,7 +25,7 @@ Explore the deployed version of Pizza Store [here]().
    pnpm run dev
    ```
 
-   Visit [http://localhost:3000](http://localhost:3000) to view the application.
+   Visit [http://localhost:5173](http://localhost:5173) to view the application.
 
 ## Technologies
 
